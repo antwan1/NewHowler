@@ -1,0 +1,31 @@
+2021-09-25 08:15:48,845 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler\app\routes.py", line 38, in index
+    return render_template('index.html', title='Home', form=form,
+  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler\app\templates\index.html", line 1, in top-level template code
+    {% extends "layout.html" %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler\app\templates\layout.html", line 1, in top-level template code
+    {% extends 'bootstrap/layout.html' %}
+  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: bootstrap/layout.html
