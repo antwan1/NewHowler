@@ -1,4 +1,4 @@
-2021-09-25 10:05:36,555 ERROR: Exception on /index [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+2021-09-25 10:25:22,467 ERROR: Exception on /index [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,7 +10,7 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 38, in index
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 39, in index
     return render_template('index.html', title='Home', form=form,
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(
@@ -30,19 +30,19 @@ Traceback (most recent call last):
     {%- block html %}
   File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
     {% block body -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
-    {% block content -%}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 48, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 11, in block 'app_content'
-    {% include '_post.html' %}
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 59, in get_source
-    return self._get_source_fast(environment, template)
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: _post.html
-2021-09-25 10:06:15,038 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
-2021-09-25 10:06:16,313 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
+    {% block navbar %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 28, in block 'navbar'
+    <a href="{{ url_for('main.messages') }}">
+  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.messages'. Did you mean 'messages' instead?
+2021-09-25 10:26:16,232 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
+2021-09-25 10:26:17,498 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -54,7 +54,7 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 38, in index
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 39, in index
     return render_template('index.html', title='Home', form=form,
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(
@@ -74,18 +74,19 @@ Traceback (most recent call last):
     {%- block html %}
   File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
     {% block body -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
-    {% block content -%}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 48, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 11, in block 'app_content'
-    {% include '_post.html' %}
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 59, in get_source
-    return self._get_source_fast(environment, template)
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: _post.html
-2021-09-25 10:06:23,705 ERROR: Exception on /index [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
+    {% block navbar %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 28, in block 'navbar'
+    <a href="{{ url_for('main.messages') }}">
+  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
+    rv = url_adapter.build(
+  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'main.messages'. Did you mean 'messages' instead?
+2021-09-25 10:26:46,246 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
+2021-09-25 10:26:47,235 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -97,7 +98,7 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 38, in index
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 39, in index
     return render_template('index.html', title='Home', form=form,
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(
@@ -117,15 +118,11 @@ Traceback (most recent call last):
     {%- block html %}
   File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
     {% block body -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
-    {% block content -%}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 48, in block 'content'
-    {% block app_content %}{% endblock %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 11, in block 'app_content'
-    {% include '_post.html' %}
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 59, in get_source
-    return self._get_source_fast(environment, template)
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: _post.html
-2021-09-25 10:08:12,920 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
+    {% block navbar %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 29, in block 'navbar'
+    {{ _('Messages') }}
+  File "c:\users\anton\downloads\lib\site-packages\jinja2\utils.py", line 84, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+jinja2.exceptions.UndefinedError: '_' is undefined
+2021-09-25 10:27:25,950 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]

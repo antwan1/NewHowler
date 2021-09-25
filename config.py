@@ -17,5 +17,6 @@ class Config(object):
 
     #To emulate mail server, remember to use:  python -m smtpd -n -c DebuggingServer localhost:8025
     LANGUAGES = ['en', 'es']  #Supported languages for the website.
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') #Microsoft Azure Transaltion Api
 
     

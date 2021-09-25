@@ -1,4 +1,5 @@
-2021-09-25 10:27:27,228 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+2021-09-25 10:38:44,273 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
+2021-09-25 10:38:54,204 ERROR: Exception on /user/molinaa [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,8 +11,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 39, in index
-    return render_template('index.html', title='Home', form=form,
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 122, in user
+    return render_template('user.html', user=user, posts=posts.items,
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 128, in _render
@@ -20,8 +21,8 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
   File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
@@ -30,15 +31,17 @@ Traceback (most recent call last):
     {%- block html %}
   File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
     {% block body -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
-    {% block navbar %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 29, in block 'navbar'
-    {{ _('Messages') }}
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 58, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\user.html", line 8, in block 'app_content'
+    <h1>{{ _('User') }}: {{ user.username }}</h1>
   File "c:\users\anton\downloads\lib\site-packages\jinja2\utils.py", line 84, in from_obj
     if hasattr(obj, "jinja_pass_arg"):
 jinja2.exceptions.UndefinedError: '_' is undefined
-2021-09-25 10:29:14,838 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
-2021-09-25 10:29:16,764 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+2021-09-25 10:40:46,474 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
+2021-09-25 10:40:49,804 ERROR: Exception on /user/molinaa [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
@@ -50,8 +53,8 @@ Traceback (most recent call last):
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
   File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 39, in index
-    return render_template('index.html', title='Home', form=form,
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 122, in user
+    return render_template('user.html', user=user, posts=posts.items,
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
     return _render(
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 128, in _render
@@ -60,8 +63,8 @@ Traceback (most recent call last):
     self.environment.handle_exception()
   File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
     raise rewrite_traceback_stack(source=source)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
   File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
   File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
@@ -70,40 +73,60 @@ Traceback (most recent call last):
     {%- block html %}
   File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
     {% block body -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
-    {% block navbar %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 29, in block 'navbar'
-    {{ _('Messages') }}
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\utils.py", line 84, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-jinja2.exceptions.UndefinedError: '_' is undefined
-2021-09-25 10:30:39,908 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
-2021-09-25 10:30:55,829 ERROR: Exception on /messages [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 251, in messages
-    return render_template('messages', messages=messages.items,
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 148, in render_template
-    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 997, in get_template
-    return self._load_template(name, globals)
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 958, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\loaders.py", line 125, in load
-    source, filename, uptodate = self.get_source(environment, name)
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 58, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\user.html", line 33, in block 'app_content'
+    {% include '_post.html' %}
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 59, in get_source
     return self._get_source_fast(environment, template)
   File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
     raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: messages
+jinja2.exceptions.TemplateNotFound: _post.html
+2021-09-25 10:41:02,491 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
+2021-09-25 10:41:05,288 ERROR: Exception on /user/molinaa [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 122, in user
+    return render_template('user.html', user=user, posts=posts.items,
+  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\user.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block 'body'
+    {% block content -%}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 58, in block 'content'
+    {% block app_content %}{% endblock %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\user.html", line 33, in block 'app_content'
+    {% include '_post.html' %}
+  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: _post.html
+2021-09-25 10:41:16,608 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
+2021-09-25 10:48:08,904 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
