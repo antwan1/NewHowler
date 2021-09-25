@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Email, EqualTo, ValidationError, Length
 from app.models import User
+from flask_babel import lazy_gettext as _l
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -64,6 +65,6 @@ class ResetPasswordForm(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
 class MessageForm(FlaskForm):
-    message = TextAreaField(('Message'), validators=[
+    message = TextAreaField(_l('Message'), validators=[
         DataRequired(), Length(min=0, max=140)])
-    submit = SubmitField(('Submit'))
+    submit = SubmitField(_l('Submit'))

@@ -11,9 +11,8 @@ from flask_moment import Moment
 from flask_babel import Babel
 from flask import request
 from flask_bootstrap import Bootstrap
-
 app = Flask(__name__)
-bootstrap = Bootstrap(app)
+
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -21,12 +20,16 @@ login = LoginManager(app)
 login.login_view = 'login'
 mail = Mail(app)
 moment = Moment(app)
+bootstrap = Bootstrap(app)
+babel= Babel(app)
+
+
 
 #babel = Babel(app)    #Check flask-babel documentation to change languages at will etc.
 
 
 
-from app import routes, models, errors
+
 
 if not app.debug:
     if app.config['MAIL_SERVER']:
@@ -55,3 +58,14 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('Howler startup')
+
+
+
+
+
+
+@babel.localeselector  #The Babel instance provides a localeselector decorator. The decorated function is invoked for each request to select a language translation to use for that request
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+    from app import routes, models, errors

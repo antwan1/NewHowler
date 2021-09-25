@@ -16,6 +16,6 @@ class Config(object):
     POSTS_PER_PAGE = 30 #This will be a config for pagination, this can be changed to slow down mass information if required.
 
     #To emulate mail server, remember to use:  python -m smtpd -n -c DebuggingServer localhost:8025
-    LANGUAGES = ['en', 'es']
+    LANGUAGES = ['en', 'es']  #Supported languages for the website.
 
     
