@@ -88,3 +88,5 @@ Traceback (most recent call last):
     raise BuildError(endpoint, values, method, self)
 werkzeug.routing.BuildError: Could not build url for endpoint 'main.notifications'. Did you mean 'notifications' instead?
 2021-09-26 11:59:21,785 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-5afd7201a232c3e73e2854027d7564bcaaef174f\app\__init__.py:60]
+2021-09-26 12:30:34,380 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-5afd7201a232c3e73e2854027d7564bcaaef174f\app\__init__.py:60]
+2021-09-26 12:34:24,760 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-5afd7201a232c3e73e2854027d7564bcaaef174f\app\__init__.py:60]
