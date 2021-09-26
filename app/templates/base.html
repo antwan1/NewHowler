@@ -27,6 +27,10 @@
                     {% else %}
                     <li><a href="{{ url_for('messages') }}">
                             {{ _('Messages') }}
+                             {% set new_messages = current_user.new_messages() %}
+                            {% if new_messages %}
+                            <span class="badge">{{ new_messages }}</span>
+                            {% endif %}
                         </a></li>
                     <li><a href="{{ url_for('user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
                     <li><a href="{{ url_for('logout') }}">{{ _('Logout') }}</a></li>
@@ -111,5 +115,24 @@
                 }
             );
         });
+
+
+
+        {% if current_user.is_authenticated %}
+        $(function() {
+            var since = 0;
+            setInterval(function() {
+                $.ajax('{{ url_for('notifications') }}?since=' + since).done(
+                    function(notifications) {
+                        for (var i = 0; i < notifications.length; i++) {
+                            if (notifications[i].name == 'unread_message_count')
+                                set_message_count(notifications[i].data);
+                            since = notifications[i].timestamp;
+                        }
+                    }
+                );
+            }, 10000);
+        });
+        {% endif %}
     </script>
 {% endblock %}
