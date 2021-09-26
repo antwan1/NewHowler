@@ -2,7 +2,6 @@ import os
 import click
 from app import app
 
-
 #This is to remember all commands. 
 
 @app.cli.group()
