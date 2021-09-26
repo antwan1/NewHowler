@@ -19,7 +19,8 @@
                     <p>
                         <form action="{{ url_for('follow', username=user.username) }}"
                               method="post">
-                            {{ form.hidden_tag() }}
+                            {{ form.hidden_tag() }}   <!-- The standard way in which an application includes these components in a web page is by adding the HTML in the proper place, and then for the components that need scripting support, 
+                            "calling a JavaScript function that initializes it or activates it. The popover component does require JavaScript support".-->
                             {{ form.submit(value=_('Follow'),
                                            class_='btn btn-default btn-sm') }}
                         </form>
