@@ -48,3 +48,8 @@ jinja2.exceptions.TemplateSyntaxError: expected token 'name', got 'end of statem
 2021-09-25 13:20:53,258 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
 2021-09-25 13:28:37,393 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
 2021-09-25 13:30:02,134 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
+2021-09-26 14:26:06,600 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
+2021-09-26 14:26:49,674 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
+2021-09-26 14:27:04,666 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
+2021-09-26 14:27:15,858 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
+2021-09-26 14:29:58,806 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
