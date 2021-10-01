@@ -2,12 +2,13 @@
 from datetime import datetime
 from flask import render_template, flash, redirect, url_for, request, g, current_app
 from flask_login import login_user, logout_user, current_user, login_required
+from requests.api import post
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
 from app import app, db
 from app.forms import JobForm, LoginForm, MessageForm, RegistrationForm, EditProfileForm, \
     EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
-from app.models import Message, Notification, User, Post
+from app.models import Jobpost, Message, Notification, User, Post
 from app.email import send_password_reset_email
 from flask import g
 from flask_babel import get_locale
@@ -65,13 +66,12 @@ def index():
                            prev_url=prev_url)
 
 # Redirects user to jobs landing page, (might not be implemented).
-@app.route("/jobs" ,  methods=['GET', 'POST'])
+@app.route("/opportunities" ,  methods=['GET', 'POST'])
 @login_required
-def jobs():
-    form =JobForm()
-    
+def opportunity():
+    posts =Jobpost.query.all() #This will grab all post from jobpost into this html file
 
-    return render_template('jobs.html' , title=_('Opportunities'))
+    return render_template('oppor.html' , title=_('create job'), posts = posts)
 #If user clicks on 'Explore', Html will render followed post from current users.
 @app.route('/explore')
 @login_required
@@ -308,3 +308,18 @@ def notifications():
         'data': n.get_data(),
         'timestamp': n.timestamp
     } for n in notifications])
+
+
+@app.route('/job/new', methods=['GET', 'POST'])
+@login_required
+def new_jobs():
+    form = JobForm()
+    if form.validate_on_submit():
+        
+        post = Jobpost(title=form.title.data, content=form.content.data, author=current_user)
+        db.session.add(post)
+        db.session.commit()
+        flash('your job post has been created', 'success')
+        return redirect(url_for('opportunity'))
+    return render_template('createjob.html' , title=_('create job'), form=form, legend = 'Job Creation')
+

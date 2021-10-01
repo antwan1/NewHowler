@@ -1,116 +1,112 @@
-2021-09-26 20:04:36,604 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+2021-09-27 21:26:47,329 ERROR: Exception on / [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
     rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 23, in news
-    return render_template(url_for('news.html'))
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'news.html'. Did you mean 'news' instead?
-2021-09-26 20:04:40,277 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1489, in dispatch_request
+    self.raise_routing_exception(req)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1471, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\werkzeug\routing.py", line 2032, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 23, in news
-    return render_template(url_for('news.html'))
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1383, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1323, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\errors.py", line 6, in not_found_error
+    return render_template('404.html'), 404
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
+    {% block navbar %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 18, in block 'navbar'
+    <a class="navbar-brand" href="{{ url_for('news')}}"> News </a>
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
     rv = url_adapter.build(
-  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\werkzeug\routing.py", line 2305, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'news.html'. Did you mean 'news' instead?
-2021-09-26 20:06:04,656 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+werkzeug.routing.BuildError: Could not build url for endpoint 'news'. Did you forget to specify values ['news']?
+2021-09-27 21:27:01,368 ERROR: Exception on / [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
     rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 23, in news
-    return render_template(url_for('news' , title='News'))
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'news.html'. Did you mean 'news' instead?
-2021-09-26 20:06:05,583 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1489, in dispatch_request
+    self.raise_routing_exception(req)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1471, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\werkzeug\routing.py", line 2032, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 23, in news
-    return render_template(url_for('news' , title='News'))
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1383, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1323, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\errors.py", line 6, in not_found_error
+    return render_template('404.html'), 404
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 147, in render_template
+    return _render(
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 128, in _render
+    rv = template.render(context)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
+    {% extends 'bootstrap/base.html' %}
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
+    {%- block html %}
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
+    {% block body -%}
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
+    {% block navbar %}
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 18, in block 'navbar'
+    <a class="navbar-brand" href="{{ url_for('news')}}"> News </a>
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
     rv = url_adapter.build(
-  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\werkzeug\routing.py", line 2305, in build
     raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'news.html'. Did you mean 'news' instead?
-2021-09-26 20:06:07,697 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 23, in news
-    return render_template(url_for('news' , title='News'))
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'news.html'. Did you mean 'news' instead?
-2021-09-26 20:06:39,104 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 20:06:39,963 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 20:07:10,576 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 20:08:46,448 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 20:08:47,286 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 20:10:47,974 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 22:16:02,729 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 22:19:25,752 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 22:22:20,453 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-27 21:26:16,235 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:70]
-2021-09-27 21:26:45,834 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+werkzeug.routing.BuildError: Could not build url for endpoint 'news'. Did you forget to specify values ['news']?
