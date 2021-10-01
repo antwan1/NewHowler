@@ -5,7 +5,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
 from app import app, db
-from app.forms import LoginForm, MessageForm, RegistrationForm, EditProfileForm, \
+from app.forms import JobForm, LoginForm, MessageForm, RegistrationForm, EditProfileForm, \
     EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import Message, Notification, User, Post
 from app.email import send_password_reset_email
@@ -17,6 +17,15 @@ from app.translate import translate
 
 
 
+#This will direct the user to an RSS feed full of scientific news.
+@app.route('/news', methods=['GET', 'POST'])
+@login_required
+def news():
+     return render_template('news.html' , title=_('News'))
+
+
+   
+
 @app.before_request
 def before_request():
     if current_user.is_authenticated:
@@ -25,7 +34,7 @@ def before_request():
     g.locale = str(get_locale())
 
 
-@app.route('/', methods=['GET', 'POST'])
+
 @app.route('/index', methods=['GET', 'POST'])
 @login_required
 def index():
@@ -33,6 +42,7 @@ def index():
     if form.validate_on_submit():
         try:
             language = detect(form.post.data)  #each time a post is submitted, I run the text through the detect() function to try to determine the language
+                                                #However, this service does not function as the api from azure will not be accepted this machine.
         except LangDetectException:
             language = ''
         post = Post(body=form.post.data, author=current_user,
@@ -54,13 +64,21 @@ def index():
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
+# Redirects user to jobs landing page, (might not be implemented).
+@app.route("/jobs" ,  methods=['GET', 'POST'])
+@login_required
+def jobs():
+    form =JobForm()
+    
 
+    return render_template('jobs.html' , title=_('Opportunities'))
+#If user clicks on 'Explore', Html will render followed post from current users.
 @app.route('/explore')
 @login_required
 def explore():
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
+        page, app.config['POSTS_PER_PAGE'], False) #Sets the amount of post to placed from config.py
     next_url = url_for('explore', page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('explore', page=posts.prev_num) \
@@ -69,7 +87,7 @@ def explore():
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
-
+# Access to log in page, however if there is a current user from the db is already logged, then it redirects to index
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
@@ -78,8 +96,8 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
-            flash(_('Invalid username or password'))
-            return redirect(url_for('login'))
+            flash(_('Invalid username or password'))  
+            return redirect(url_for('login'))  
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
@@ -87,7 +105,7 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title=_('Sign In'), form=form)
 
-
+#To log out user by using logging library
 @app.route('/logout')
 def logout():
     logout_user()

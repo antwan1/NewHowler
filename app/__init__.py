@@ -12,6 +12,7 @@ from flask_moment import Moment
 from flask_babel import Babel
 from flask import request
 
+
 app = Flask(__name__)
 
 app.config.from_object(Config)
@@ -23,7 +24,11 @@ login.login_view = 'login'
 mail = Mail(app)
 moment = Moment(app)
 
+
 babel= Babel(app)
+
+
+
 
 
 

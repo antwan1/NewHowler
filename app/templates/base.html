@@ -15,9 +15,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ url_for('index') }}">Howler</a>
+                
+                
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
+                    <li><a  href="{{ url_for('news')}}"> {{ _('News') }} </a></li>
+                     <li><a  href="{{ url_for('jobs')}}"> {{_('Opportunities')}}</a></li>
                     <li><a href="{{ url_for('index') }}">{{ _('Home') }}</a></li>
                     <li><a href="{{ url_for('explore') }}">{{ _('Explore') }}</a></li>
                 </ul>
@@ -51,9 +55,16 @@
         {% endif %}
         {% endwith %}
 
-        {# application content needs to be provided in the app_content block #}
-        {% block app_content %}{% endblock %}
+        
+        {% block app_content %}
+        
+        {% endblock %}
     </div>
+    <!--  -->
+<div class="footer">
+  
+</div>
+
 {% endblock %}
 
 {% block scripts %}
@@ -135,4 +146,8 @@
         });
         {% endif %}
     </script>
+{% endblock %}
+{% block styles %}
+{{super()}}
+  <link rel="stylesheet" href="{{url_for('.static', filename='main.css')}}">
 {% endblock %}

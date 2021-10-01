@@ -1,72 +1,28 @@
-2021-09-26 16:21:48,417 ERROR: Exception on / [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 53, in index
-    return render_template('index.html', title=_('Home'), form=form,
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 6, in block 'html'
-    {%- block head %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 13, in block 'head'
-    {%- block styles %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 15, in block 'styles'
-    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\utils.py", line 84, in from_obj
-    if hasattr(obj, "jinja_pass_arg"):
-jinja2.exceptions.UndefinedError: 'bootstrap_find_resource' is undefined
-2021-09-26 16:22:31,962 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
-2021-09-26 16:22:32,681 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:60]
-2021-09-26 16:35:05,664 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
-2021-09-26 16:35:07,773 ERROR: Exception on / [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 53, in index
-    return render_template('index.html', title=_('Home'), form=form,
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 59, in get_source
-    return self._get_source_fast(environment, template)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: bootstrap/wtf.html
-2021-09-26 16:36:43,156 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:62]
+2021-09-27 22:03:46,268 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-27 22:03:47,034 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:21:34,394 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:22:12,562 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:22:31,820 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:23:37,815 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:24:48,966 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:25:54,665 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:28:59,710 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:30:28,864 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:31:29,454 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:36:04,611 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:40:58,923 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:48:21,169 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:49:48,252 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:50:32,890 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:50:49,996 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 13:50:50,725 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 15:46:21,575 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 15:47:59,238 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 15:51:55,250 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 15:52:51,672 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 16:02:36,479 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-28 16:03:46,473 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-30 12:14:56,880 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-30 12:40:01,557 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-09-30 22:17:20,316 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]
+2021-10-01 08:38:03,330 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:67]

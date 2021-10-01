@@ -1,118 +1,102 @@
-2021-09-25 10:53:07,156 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+2021-09-27 21:35:38,534 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
     rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 39, in index
-    return render_template('index.html', title='Home', form=form,
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
-    {% block body -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
-    {% block navbar %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 31, in block 'navbar'
-    <a href="{{ url_for('messages.html') }}">
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'messages.html'. Did you mean 'messages' instead?
-2021-09-25 10:53:25,098 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
-2021-09-25 10:53:26,362 ERROR: Exception on / [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 27, in news
+    first_article = feed['entries'][0]
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\feedparser\util.py", line 113, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'enteries'
+2021-09-27 21:35:51,191 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
     rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 39, in index
-    return render_template('index.html', title='Home', form=form,
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\index.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
-    {% block body -%}
-  File "c:\users\anton\downloads\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
-    {% block navbar %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 31, in block 'navbar'
-    <a href="{{ url_for('messages.html') }}">
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\users\anton\downloads\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "c:\users\anton\downloads\lib\site-packages\werkzeug\routing.py", line 2305, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'messages.html'. Did you mean 'messages' instead?
-2021-09-25 10:53:38,919 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
-2021-09-25 10:53:43,741 ERROR: Exception on /messages [GET] [in c:\users\anton\downloads\lib\site-packages\flask\app.py:1454]
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 27, in news
+    first_article = feed['entries'][0]
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\feedparser\util.py", line 113, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'enteries'
+2021-09-27 21:35:51,577 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
     rv = self.handle_user_exception(e)
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
     rv = self.dispatch_request()
-  File "c:\users\anton\downloads\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\users\anton\downloads\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 251, in messages
-    return render_template('messages', messages=messages.items,
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 148, in render_template
-    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 1068, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 997, in get_template
-    return self._load_template(name, globals)
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\environment.py", line 958, in _load_template
-    template = self.loader.load(self, name, self.make_globals(globals))
-  File "c:\users\anton\downloads\lib\site-packages\jinja2\loaders.py", line 125, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 59, in get_source
-    return self._get_source_fast(environment, template)
-  File "c:\users\anton\downloads\lib\site-packages\flask\templating.py", line 95, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: messages
-2021-09-25 10:58:04,478 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:58]
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 27, in news
+    first_article = feed['entries'][0]
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\feedparser\util.py", line 113, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'enteries'
+2021-09-27 21:35:52,621 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 27, in news
+    first_article = feed['entries'][0]
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\feedparser\util.py", line 113, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'enteries'
+2021-09-27 21:37:30,111 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 27, in news
+    render_template('news.html' , title=first_article.get("title"),published=first_article.get("published"),summary=first_article.get("summary"))
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\feedparser\util.py", line 113, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'enteries'
+2021-09-27 21:37:30,567 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 27, in news
+    render_template('news.html' , title=first_article.get("title"),published=first_article.get("published"),summary=first_article.get("summary"))
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\feedparser\util.py", line 113, in __getitem__
+    return dict.__getitem__(self, key)
+KeyError: 'enteries'
