@@ -12,7 +12,7 @@ from flask_moment import Moment
 from flask_babel import Babel
 from flask import request
 
-
+#Where all libraries are initialised to a variable to be exported, according to MVT style of architecture.
 app = Flask(__name__)
 
 app.config.from_object(Config)

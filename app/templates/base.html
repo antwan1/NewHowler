@@ -14,7 +14,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ url_for('index') }}">Howler</a>
+                <a class="navbar-brand" href="{{ url_for('index') }}">{{_(Howler)}}</a>  <!-- Redirects user back to home page if required-->
                 
                 
             </div>
@@ -29,15 +29,15 @@
                     {% if current_user.is_anonymous %}
                     <li><a href="{{ url_for('login') }}">{{ _('Login') }}</a></li>
                     {% else %}
-                    <li><a href="{{ url_for('messages') }}">
+                    <li><a href="{{ url_for('messages') }}">  <!-- Takes user to Messages.html to read messages-->
                             {{ _('Messages') }}
-                             {% set new_messages = current_user.new_messages() %}
+                             {% set new_messages = current_user.new_messages() %}  <!-- The new messages unread will only be placed by checking the id of the user-->
                             {% if new_messages %}
                             <span class="badge">{{ new_messages }}</span>
                             {% endif %}
                         </a></li>
-                    <li><a href="{{ url_for('user', username=current_user.username) }}">{{ _('Profile') }}</a></li>
-                    <li><a href="{{ url_for('logout') }}">{{ _('Logout') }}</a></li>
+                    <li><a href="{{ url_for('user', username=current_user.username) }}">{{ _('Profile') }}</a></li>  <!--Profile page-->
+                    <li><a href="{{ url_for('logout') }}">{{ _('Logout') }}</a></li>  <!-- log out function will take user back to login-->
                     {% endif %}
                 </ul>
             </div>
@@ -45,25 +45,38 @@
     </nav>
 {% endblock %}
 
-{% block content %}
+{% block content %} 
     <div class="container">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% for message in messages %}  <!-- Counts how many messages there are within the database-->
+            <div class="alert alert-info" role="alert">{{ message }}</div>  <!-- displays it-->
             {% endfor %}
         {% endif %}
         {% endwith %}
 
         
         {% block app_content %}
-        
+        <!-- Where all body content should be -->
         {% endblock %}
     </div>
-    <!--  -->
-<div class="footer">
-  
-</div>
+    
+<div class="footer-basic">
+        <footer>
+            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Home</a></li>
+                <li class="list-inline-item"><a href="#">Services</a></li>
+                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+            </ul>
+            <p class="copyright">Company Name © 2018</p>
+        </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    
 
 {% endblock %}
 
@@ -72,6 +85,7 @@
     {{ moment.include_moment() }}
     {{ moment.lang(g.locale) }}
     <script>
+    
          function translate(sourceElem, destElem, sourceLang, destLang) {
             $(destElem).html('<img src="{{ url_for('static', filename='loading.gif') }}">');
             $.post('/translate', {

@@ -20,6 +20,8 @@ from app.translate import translate
 
 
 
+#The forms.py acts a view function
+
 #This will direct the user to an RSS feed full of scientific news.
 @app.route('/news', methods=['GET', 'POST'])
 @login_required
@@ -29,7 +31,7 @@ def news():
 
    
 
-@app.before_request
+@app.before_request  #Checks if user is logged to know when they have been last seen.
 def before_request():
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
@@ -37,8 +39,8 @@ def before_request():
     g.locale = str(get_locale())
 
 
-
-@app.route('/index', methods=['GET', 'POST'])
+@app.route("/")
+@app.route('/index', methods=['GET', 'POST'])  #This will direct the user to the home page.
 @login_required
 def index():
     form = PostForm()
@@ -51,7 +53,8 @@ def index():
         post = Post(body=form.post.data, author=current_user,
                     language=language)
     if form.validate_on_submit():
-        post = Post(body=form.post.data, author=current_user)
+        post = Post(body=form.post.data, author=current_user)  
+        #Once form is submitted, it will be added to the database.
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
@@ -321,6 +324,7 @@ def new_jobs():
         post = Jobpost(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
+        #Once form is submitted, it will be added to the database.
         flash('your job post has been created', 'success')
         return redirect(url_for('opportunity'))
     return render_template('createjob.html' , title=_('create job'), form=form, legend = 'Job Creation')

@@ -6,17 +6,19 @@ from wtforms.validators import ValidationError, DataRequired, Email, EqualTo, \
 from flask_babel import _, lazy_gettext as _l
 from app.models import User
 
+#Flask-wtforms is providing data required.
 
+#To attain user inputs for login in HTML
 class LoginForm(FlaskForm):
     username = StringField(_l('Username'), validators=[DataRequired()])
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     remember_me = BooleanField(_l('Remember Me'))
     submit = SubmitField(_l('Sign In'))
 
-
+#To gain new users in the registration.html, the the first password input will be compared against the hashed password.
 class RegistrationForm(FlaskForm):
     username = StringField(_l('Username'), validators=[DataRequired()])
-    email = StringField(_l('Email'), validators=[DataRequired(), Email()])
+    email = StringField(_l('Email'), validators=[DataRequired(), Email()])  #has email method to ensure is not anytype of input.
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     password2 = PasswordField(
         _l('Repeat Password'), validators=[DataRequired(),

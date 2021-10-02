@@ -3,7 +3,7 @@
 {% block app_content %}
     <h1>{{ _('Messages') }}</h1>
     {% for post in messages %}
-        {% include '__post.html' %}
+        {% include '__post.html' %} <!--Messages function will act like post-->
     {% endfor %}
     <nav aria-label="...">
         <ul class="pager">

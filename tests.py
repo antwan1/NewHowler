@@ -40,7 +40,15 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(u1.followed.all(), [])
         self.assertEqual(u1.followers.all(), [])
 
+#To test emails.
+# with mail.record_messages() as outbox:
 
+#     mail.send_message(subject='testing',
+#                       body='test',
+#                       recipients=emails)
+
+#     assert len(outbox) == 1
+#     assert outbox[0].subject == "testing"
 #Antonio should follow palla
         u1.follow(u2)
         db.session.commit()

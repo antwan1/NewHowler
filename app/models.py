@@ -14,6 +14,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def load_user(id):
     return User.query.get(int(id))
 
+#The Unary Table, full of users. 
 followers = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
@@ -30,10 +31,12 @@ class User(UserMixin,db.Model):
     about_me = db.Column(db.String(1500))
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
-        'User', secondary=followers,                                                #A self join is a join in which a table is joined with itself (which is also called Unary relationships), especially when the table has a FOREIGN KEY which references its own PRIMARY KEY. 
-        primaryjoin=(followers.c.follower_id == id),                                # To join a table itself means that each row of the table is combined with itself and with every other row of the table.
+        #A self join is a join in which a table is joined with itself (which is also called Unary relationships), especially when the table has a FOREIGN KEY which references its own PRIMARY KEY.
+        'User', secondary=followers,                                                 
+        primaryjoin=(followers.c.follower_id == id),                                
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
+        # To join a table itself means that each row of the table is combined with itself and with every other row of the table.
     
 
     messages_sent = db.relationship('Message',
@@ -60,34 +63,36 @@ class User(UserMixin,db.Model):
         return Message.query.filter_by(recipient=self).filter(
             Message.timestamp > last_read_time).count()
 
-
+    #Grabs email from user's gravatar account and compares it to their email to format gravatar pic into profile.
     def avatar(self, size):
         digest = md5(self.email.lower().encode('utf-8')).hexdigest()
         return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
             digest, size)
    
     
-
+#Must be tested in test.py
+#function gathers password from user and creates a hash according to Wekzeug documentation.
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
+#This checks password with hashed password to log in
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-
+    #if user clicks the follow button and they're not following user, they will be appended to the array of followed of the user following.
     def follow(self, user):
         if not self.is_following(user):
             self.followed.append(user)
-
+#Removes user from followed list
     def unfollow(self, user):
         if self.is_following(user):
             self.followed.remove(user)
-
+#Counts how many users the current_user is following.
     def is_following(self, user):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
 
-
+#The function that enables post in the home page to display post by followed users through a join. 
     def followed_posts(self):
         return Post.query.join(
             followers, (followers.c.followed_id == Post.user_id)).filter(
@@ -97,21 +102,22 @@ class User(UserMixin,db.Model):
 
 
 
-    #When the user clicks on the emailed link, the token is going to be sent back to the application as part of the URL, and the first thing the view function that handles this URL will do is to verify it. If the signature is valid, then the user can be identified by the ID stored in the payload. Once the user's identity is known, the application can ask for a new password and set it on the user's account.
+  
 
-#Since these tokens belong to users, I'm going to write the token generation and verification functions as methods in the User model:
-#The get_reset_password_token() function returns a JWT token as a string, which is generated directly by the jwt.encode() function.
+
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
             app.config['SECRET_KEY'], algorithm='HS256')
-
+  #When the user clicks on the emailed link, the token is going to be sent back to the application as part of the URL, and the first thing the view function that handles this URL will do is to verify it. If the signature is valid, then the user can be identified by the ID stored in the payload. Once the user's identity is known, the application can ask for a new password and set it on the user's account.
     @staticmethod
     def verify_reset_password_token(token):
         try:
             id = jwt.decode(token, app.config['SECRET_KEY'],
                             algorithms=['HS256'])['reset_password']
         except:
+            #Since these tokens belong to users, I'm going to write the token generation and verification functions as methods in the User model:
+#The get_reset_password_token() function returns a JWT token as a string, which is generated directly by the jwt.encode() function.
             return
         return User.query.get(id)
     def __repr__(self):

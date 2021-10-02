@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block app_content %}
-    <h1>{{ _('An unexpected error has occurred') }}</h1>
-    <p>{{ _('The administrator has been notified. Sorry for the inconvenience!') }}</p>
-    <p><a href="{{ url_for('index') }}">{{ _('Back') }}</a></p>
+    <h1>{{ _('An unexpected error has occurred') }}</h1> <!-- GET Request Error -->
+    <p>{{ _('The administrator has been notified. Sorry for the inconvenience!') }}</p> <!-- Polite Message -->
+    <p><a href="{{ url_for('index') }}">{{ _('Go Back') }}</a></p> <!-- Will redirect user back to index.-->
 {% endblock %}

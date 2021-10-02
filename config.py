@@ -2,22 +2,28 @@ import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-
+#When the app is initialized, the variables in config.py are used to configure Flask and its extensions are accessible via the app. 
+# config dictionary – e.g. app. config["DEBUG"] .
+#
 class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'Dont guess please'
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'Dont guess please'   #Token key to protect against malicious users who do cookie tampering.
+    
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'app.db')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+        'sqlite:///' + os.path.join(basedir, 'app.db')  
+    SQLALCHEMY_TRACK_MODIFICATIONS = True  #So I can track modifications from the database
+    #To emulate mail server, remember to use:  python -m smtpd -n -c DebuggingServer localhost:802
+    #Check Flask-Mail for documentation
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['your-email@example.com']
+    MAIL_SUPPRESS_SEND  = True  #This is so no emails get sent while testing. 
+    ADMINS = ['antoniore385@gmail.com']
     POSTS_PER_PAGE = 30 #This will be a config for pagination, this can be changed to slow down mass information if required.
 
-    #To emulate mail server, remember to use:  python -m smtpd -n -c DebuggingServer localhost:8025
+    
     LANGUAGES = ['en', 'es']  #Supported languages for the website.
-    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') #Microsoft Azure Transaltion Api
+    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') #Microsoft Azure Transaltion Api for translation services, however machine rejects any api
 
     

@@ -3,28 +3,29 @@
 {% block app_content %}
     <table class="table table-hover">
         <tr>
-            <td width="256px"><img src="{{ user.avatar(256) }}"></td>
+            <td width="256px"><img src="{{ user.avatar(256) }}"></td> <!-- Shows Gravatar picture from user.avatar-->
             <td>
                 <h1>{{ _('User') }}: {{ user.username }}</h1>
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}
-                <p>{{ _('Last seen on') }}: {{ moment(user.last_seen).format('LLL') }}</p>
+                <p>{{ _('Last seen on') }}: {{ moment(user.last_seen).format('LLL') }}</p> <!-- To indicate when the user was last seen-->
                 {% endif %}
                 <p>{{ _('%(count)d followers', count=user.followers.count()) }}, {{ _('%(count)d following', count=user.followed.count()) }}</p>
-                {% if user == current_user %}
+                {% if user == current_user %} <!-- if it is the user of the profile, it will show a button to edit profile-->
                 <p><a href="{{ url_for('edit_profile') }}">{{ _('Edit your profile') }}</a></p>
                 {% elif not current_user.is_following(user) %}
                 <p>
-                    <form action="{{ url_for('follow', username=user.username) }}" method="post">
-                        {{ form.hidden_tag() }}
-                        {{ form.submit(value=_('Follow'), class_='btn btn-default') }}
+                    <form action="{{ url_for('follow', username=user.username) }}" method="post"> <!-- To update -->
+                        {{ form.hidden_tag() }} <!--Need a token to access-->
+                        {{ form.submit(value=_('Follow'), class_='btn btn-default') }}  <!-- Defaults at Follow-->
                     </form>
                 </p>
                 {% else %}
                 <p>
-                    <form action="{{ url_for('unfollow', username=user.username) }}" method="post">
+                    <form action="{{ url_for('unfollow', username=user.username) }}" method="post"> <!-- To update -->
                         {{ form.hidden_tag() }}
-                        {{ form.submit(value=_('Unfollow'), class_='btn btn-default') }}
+                        {{ form.submit(value=_('Unfollow'), class_='btn btn-default') }} <!-- The function in model will check the uses view the page is following,
+                        if user is following then Unfollow button will check-->
                     </form>
                 </p>
                 {% endif %}
@@ -35,7 +36,7 @@
         </tr>
     </table>
     {% for post in posts %}
-        {% include '__post.html' %}
+        {% include '__post.html' %}  <!-- shows post from user-->
     {% endfor %}
     <nav aria-label="...">
         <ul class="pager">
