@@ -36,9 +36,10 @@ babel= Babel(app)
 
 
 
-
-
+#Check how to use SMTPHandler at  https://docs.python.org/3.6/library/logging.handlers.html#smtphandler
+ #This is to send logs by email on errors.    
 if not app.debug:
+    #This is only needed when not in debug mode, however by default it will be
     if app.config['MAIL_SERVER']:
         auth = None
         if app.config['MAIL_USERNAME'] or app.config['MAIL_PASSWORD']:

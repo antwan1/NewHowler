@@ -1,5 +1,6 @@
 {% extends 'bootstrap/base.html' %}
 
+
 {% block title %}
     {% if title %}{{ title }} - Howler{% else %}{{ _('Welcome to Howler') }}{% endif %}
 {% endblock %}
@@ -67,11 +68,11 @@
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Home</a></li>
                 <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
+                <li class="list-inline-item"><a href="#">{{_(About)}}</a></li>
                 <li class="list-inline-item"><a href="#">Terms</a></li>
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
-            <p class="copyright">Company Name © 2018</p>
+            <p class="copyright">Howler © 2021</p>
         </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -165,3 +166,6 @@
 {{super()}}
   <link rel="stylesheet" href="{{url_for('.static', filename='main.css')}}">
 {% endblock %}
+
+
+

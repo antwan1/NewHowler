@@ -25,17 +25,21 @@ class RegistrationForm(FlaskForm):
                                            EqualTo('password')])
     submit = SubmitField(_l('Register'))
 
+#The function will check if user name exsist in the database by checking Models (User)
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
             raise ValidationError(_('Please use a different username.'))
 
+#The function will check if email exsist in the database by checking Models (User)
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError(_('Please use a different email address.'))
 
 
+
+#Request for Email, this class is temprorarily supressed
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField(_l('Email'), validators=[DataRequired(), Email()])
     submit = SubmitField(_l('Request Password Reset'))
@@ -59,20 +63,21 @@ class EditProfileForm(FlaskForm):
         super(EditProfileForm, self).__init__(*args, **kwargs)
         self.original_username = original_username
 
+#The function will check if user name exsist in the database by checking Models (User)
     def validate_username(self, username):
         if username.data != self.original_username:
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError(_('Please use a different username.'))
 
-
+# A button made for submitting Howls
 class EmptyForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
 class PostForm(FlaskForm):
-    post = TextAreaField(_l('Say something'), validators=[DataRequired()])
-    submit = SubmitField(_l('Submit'))
+    post = TextAreaField(_l('Express some Science!'), validators=[DataRequired()])
+    submit = SubmitField(_l('Howl'))
 
 
 class MessageForm(FlaskForm):
