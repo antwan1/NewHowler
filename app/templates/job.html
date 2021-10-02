@@ -5,7 +5,7 @@
 
 
      <h1 >{{ _('Look for amazing scientific Opportunities') }}</h1>
-     {% for post in posts %}
+     
         <article class="media content-section">
           
           <div class="media-body">
@@ -13,11 +13,11 @@
               <a class="mr-2" href="#">{{ post.author.username }}</a>
               
             </div>
-            <h2><a class="article-title" href="{{url_for('job', job_id =post.id)}}">{{ post.title }}</a></h2>
+            <h2 class = "article-title">{{ post.title }}</h2>
             <p class="article-content">{{ post.content }}</p>
           </div>
         </article>
-    {% endfor %}
+    
 {% if form %}
     {{ wtf.quick_form(form) }}
     <br>

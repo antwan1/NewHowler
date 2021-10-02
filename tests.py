@@ -4,26 +4,33 @@ from app import app, db
 from app.models import User, Post
 
 class UserModelCase(unittest.TestCase):
-    def setUp(self):
+    def setUp(self): # instance method to set initial state before each test method is run.
+
+
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
         db.create_all()
 
-    def tearDown(self):
+    def tearDown(self): #Python Unit test documentation = instance method to perform cleanup after each test method completes.
         db.session.remove()
         db.drop_all()
 
-    def test_password_hashing(self):
+    def test_password_hashing(self): #To Test password_hash from config
         u = User(username='molinaa')
         u.set_password('1234')
         self.assertFalse(u.check_password('watermelon'))
         self.assertTrue(u.check_password('1234'))
 
+
+#This is an example placed by corey schafer on youtube
     def test_avatar(self):
-        u = User(username='antonio', email='antonio@example.com')
-        self.assertEqual(u.avatar(128), ('https://www.gravatar.com/avatar/'
+        u = User(username='john', email='john@example.com')
+        self.assertEqual(u.avatar(128), ('https://www.gravatar.com/avatar/'  #if need to test on own profile pic,
+                                                                               # use 'https://www.gravatar.com/avatar/f6fdc1d3c21b4b1fedb1958d6370d49c' with antoniore385@gmail.com     
                                          'd4c74594d841139328695756648b6bd6'
                                          '?d=identicon&s=128'))
 
+
+#Add users to test follow
     def test_follow(self):
         u1 = User(username='antonio', email='antonio@example.com')
         u2 = User(username='palla', email='palla@example.com')
@@ -33,6 +40,8 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(u1.followed.all(), [])
         self.assertEqual(u1.followers.all(), [])
 
+
+#Antonio should follow palla
         u1.follow(u2)
         db.session.commit()
         self.assertTrue(u1.is_following(u2))
@@ -40,7 +49,7 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(u1.followed.first().username, 'palla')
         self.assertEqual(u2.followers.count(), 1)
         self.assertEqual(u2.followers.first().username, 'antonio')
-
+#Antonio should unfollow palla
         u1.unfollow(u2)
         db.session.commit()
         self.assertFalse(u1.is_following(u2))
@@ -84,6 +93,6 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(f2, [p2, p3])
         self.assertEqual(f3, [p3, p4])
         self.assertEqual(f4, [p4])
-
+#f1 is not appending the right followers. 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

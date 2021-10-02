@@ -1,10 +1,12 @@
 
 from datetime import datetime
-from flask import render_template, flash, redirect, url_for, request, g, current_app
+
+from flask import render_template, flash, redirect, url_for, request, g, current_app, abort
 from flask_login import login_user, logout_user, current_user, login_required
 from requests.api import post
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
+from wtforms import form
 from app import app, db
 from app.forms import JobForm, LoginForm, MessageForm, RegistrationForm, EditProfileForm, \
     EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
@@ -323,3 +325,28 @@ def new_jobs():
         return redirect(url_for('opportunity'))
     return render_template('createjob.html' , title=_('create job'), form=form, legend = 'Job Creation')
 
+@app.route('/job/<int:job_id>')
+def job (job_id):
+    post =Jobpost.query.get_or_404(job_id)  #Gets the id of the post clicked.
+    return render_template('job.html', title=post.title, post=post)
+
+
+
+app.route('/job/<int:job_id>/update', methods=['GET', 'POST'])
+@login_required
+def update_job (job_id):
+    post =Jobpost.query.get_or_404(job_id)
+    if post.author != current_user:
+         abort(403)  #Http response for forbidden status code
+    form = JobForm()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data  #if form is valid, jobpost will update
+        db.session.commit()  
+        flash('youre post has been updated!', 'success')   
+        return redirect(url_for('job', job_id =post.id ))  
+    elif request.method == 'GET':                               
+        form.title.data = post.title
+        form.content.data = post.content
+    return render_template('createjob.html', title=_('Update Job'), 
+            form=form, legemd = 'Update Post' )
