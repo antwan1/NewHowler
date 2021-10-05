@@ -24,13 +24,6 @@ import feedparser
 
 
 
-#The forms.py acts a view function
-
-#This will direct the user to an RSS feed full of scientific news.
-@app.route('/news', methods=['GET', 'POST'])
-@login_required
-def news():
-     return render_template('news.html' , title=_('News'))
 
 
    
@@ -372,8 +365,9 @@ def delete_job(post_id):
 
 # BBC_FEED = "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml"
 
+ #Place holder free RSS feeds, should be replaced with scientific news 
 
-RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
+RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml', 
              'cnn': 'http://rss.cnn.com/rss/edition.rss',
              'fox': 'http://feeds.foxnews.com/foxnews/latest',
              'iol': 'http://www.iol.co.za/cmlink/1.640'}
@@ -381,9 +375,10 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
 
 
 
-@app.route("/")
+@app.route("/news", methods=['GET', 'POST'])
+@login_required
 def get_news():
-    query = request.args.get("publication")
+    query = request.form.get("publication")
     if not query or query.lower() not in RSS_FEEDS:
                 publication = "bbc"
     else:

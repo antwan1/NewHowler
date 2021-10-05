@@ -1,20 +1,29 @@
-<html>
-    <head>
-        <title>Headlines</title>
-    </head>
+{% extends "base.html" %}
+{% block app_content %}
+        
+    
    <body>
-   <h1>Headlines</h1>
-
-   <form>
+   <h1>{{ _('Science Trends for, %(username)s!', username=current_user.username) }}</h1>
+<div class="page-header">
+  <h1>{{_('Search for Curiosty sake!')}}</h1>
+</div>
+   <form action="/" method="POST">
   <input type="text" name="publication" placeholder="search" />
   <input type="submit" value="Submit" />
 </form>
+
+
 {% for article in articles %}
-<b><a href="{{article.link}}">{{article.title}}</a></b><br />
+<div class="media">
+  <div class="media-left media-middle">
+   <img class="media-object" src="" alt="...">
+<b><a class="media-heading" href="{{article.link}}">{{article.title}}</a></b><br />
         <i>{{article.published}}</i><br />
         <p>{{article.summary}}</p>
         <hr />
+     </div>
+</div>
         
     {% endfor %}
 
-</html>
+{% endblock %}

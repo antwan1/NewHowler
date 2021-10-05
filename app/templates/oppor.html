@@ -20,6 +20,7 @@
             <h2><a class="article-title" href="{{url_for('job', job_id =post.id)}}">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.content }}</p>
           </div>
+          <hr/>
         </article>
     {% endfor %}
 {% if form %}

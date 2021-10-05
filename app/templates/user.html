@@ -5,7 +5,7 @@
         <tr>
             <td width="256px"><img src="{{ user.avatar(256) }}"></td> <!-- Shows Gravatar picture from user.avatar-->
             <td>
-                <h1>{{ _('Meet:') }}: {{ user.username }}</h1> <!-- I could change the headline to User instead of Meet-->
+                <h1>{{ _('User') }}: {{ user.username }}</h1> <!-- I could change the headline to User instead of Meet-->
                 {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
                 {% if user.last_seen %}
                 <p>{{ _('Last seen on') }}: {{ moment(user.last_seen).format('LLL') }}</p> <!-- To indicate when the user was last seen-->
