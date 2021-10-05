@@ -71,9 +71,16 @@ def index():
 @app.route("/opportunities" ,  methods=['GET', 'POST'])
 @login_required
 def opportunity():
-    posts =Jobpost.query.all() #This will grab all post from jobpost into this html file
+    page = request.args.get('page', 1, type=int)
+    posts = Jobpost.query.order_by(Jobpost.date_posted.desc()).paginate(
+        page, app.config['POSTS_PER_PAGE'], False) #Sets the amount of post to placed from config.py
+    next_url = url_for('explore', page=posts.next_num) \
+        if posts.has_next else None
+    prev_url = url_for('explore', page=posts.prev_num) \
+        if posts.has_prev else None
 
-    return render_template('oppor.html' , title=_('create job'), posts = posts)
+    return render_template('oppor.html' , title=_('create job'), posts=posts.items, next_url=next_url,
+                           prev_url=prev_url)
 #If user clicks on 'Explore', Html will render followed post from current users.
 @app.route('/explore')
 @login_required
@@ -256,8 +263,14 @@ def messages():
 
 
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 
+@app.route('/FAQ')
+def FAQ():
+    return render_template('FAQ.html')
 
 
 
