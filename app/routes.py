@@ -382,10 +382,14 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
 
 
 @app.route("/")
-@app.route("/<publication>")
-def get_news(publication="bbc"):
-  feed = feedparser.parse(RSS_FEEDS[publication])
- #This will loop over articles within xml
-  return render_template("home.html", articles=feed ['entries'])
+def get_news():
+    query = request.args.get("publication")
+    if not query or query.lower() not in RSS_FEEDS:
+                publication = "bbc"
+    else:
+                publication = query.lower()
+    feed = feedparser.parse(RSS_FEEDS[publication])
+    return render_template("home.html",articles=feed['entries'])
+
 
 
