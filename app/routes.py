@@ -3,7 +3,7 @@ from datetime import datetime
 
 from flask import render_template, flash, redirect, url_for, request, g, current_app, abort
 from flask_login import login_user, logout_user, current_user, login_required
-from requests.api import post
+
 from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
 from wtforms import form
@@ -348,9 +348,20 @@ def update_job (job_id):
         post.content = form.content.data  #if form is valid, jobpost will update
         db.session.commit()  
         flash('youre post has been updated!', 'success')   
-        return redirect(url_for('job', job_id =post.id ))  
+        return redirect(url_for('job', job_id = post.id ))  
     elif request.method == 'GET':                               
         form.title.data = post.title
         form.content.data = post.content
     return render_template('createjob.html', title=_('Update Job'), 
-            form=form, legemd = 'Update Post' )
+            form=form, legend = 'Update Post' )
+
+@app.route("/post/<int:job_id>/delete", methods=['POST'])
+@login_required
+def delete_job(post_id):
+    post = Jobpost.query.get_or_404(post_id)
+    if post.author != current_user:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted!', 'success')
+    return redirect(url_for('index'))
