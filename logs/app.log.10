@@ -1,112 +1,110 @@
-2021-09-27 21:26:47,329 ERROR: Exception on / [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1489, in dispatch_request
-    self.raise_routing_exception(req)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1471, in raise_routing_exception
-    raise request.routing_exception  # type: ignore
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\ctx.py", line 367, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\werkzeug\routing.py", line 2032, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-
-During handling of the above exception, another exception occurred:
-
+2021-09-27 21:59:19,019 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1383, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1323, in handle_http_exception
-    return self.ensure_sync(handler)(e)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\errors.py", line 6, in not_found_error
-    return render_template('404.html'), 404
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
-    {% block body -%}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
-    {% block navbar %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 18, in block 'navbar'
-    <a class="navbar-brand" href="{{ url_for('news')}}"> News </a>
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\werkzeug\routing.py", line 2305, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'news'. Did you forget to specify values ['news']?
-2021-09-27 21:27:01,368 ERROR: Exception on / [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1489, in dispatch_request
-    self.raise_routing_exception(req)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1471, in raise_routing_exception
-    raise request.routing_exception  # type: ignore
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\ctx.py", line 367, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\werkzeug\routing.py", line 2032, in match
-    raise NotFound()
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-
-During handling of the above exception, another exception occurred:
-
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 21:59:19,587 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
 Traceback (most recent call last):
   File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
     response = self.full_dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1383, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1323, in handle_http_exception
-    return self.ensure_sync(handler)(e)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\errors.py", line 6, in not_found_error
-    return render_template('404.html'), 404
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 147, in render_template
-    return _render(
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\templating.py", line 128, in _render
-    rv = template.render(context)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 1304, in render
-    self.environment.handle_exception()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\jinja2\environment.py", line 925, in handle_exception
-    raise rewrite_traceback_stack(source=source)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block 'doc'
-    {%- block html %}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block 'html'
-    {% block body -%}
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 21, in block 'body'
-    {% block navbar %}
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\templates\base.html", line 18, in block 'navbar'
-    <a class="navbar-brand" href="{{ url_for('news')}}"> News </a>
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\helpers.py", line 338, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\helpers.py", line 325, in url_for
-    rv = url_adapter.build(
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\werkzeug\routing.py", line 2305, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.BuildError: Could not build url for endpoint 'news'. Did you forget to specify values ['news']?
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 21:59:43,574 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 21:59:44,286 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 21:59:45,920 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 21:59:47,623 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 22:00:45,916 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 22:00:46,705 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 22:00:51,791 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.
+2021-09-27 22:01:17,823 ERROR: Exception on /news [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
+Traceback (most recent call last):
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1535, in finalize_request
+    response = self.make_response(rv)
+  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1698, in make_response
+    raise TypeError(
+TypeError: The view function for 'news' did not return a valid response. The function either returned None or ended without a return statement.

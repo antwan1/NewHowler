@@ -17,6 +17,10 @@ from flask_babel import get_locale
 from langdetect import detect, LangDetectException
 from flask import jsonify
 from app.translate import translate
+import feedparser
+
+
+
 
 
 
@@ -39,7 +43,7 @@ def before_request():
     g.locale = str(get_locale())
 
 
-@app.route("/")
+
 @app.route('/index', methods=['GET', 'POST'])  #This will direct the user to the home page.
 @login_required
 def index():
@@ -365,3 +369,23 @@ def delete_job(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('index'))
+
+# BBC_FEED = "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml"
+
+
+RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml',
+             'cnn': 'http://rss.cnn.com/rss/edition.rss',
+             'fox': 'http://feeds.foxnews.com/foxnews/latest',
+             'iol': 'http://www.iol.co.za/cmlink/1.640'}
+
+
+
+
+@app.route("/")
+@app.route("/<publication>")
+def get_news(publication="bbc"):
+  feed = feedparser.parse(RSS_FEEDS[publication])
+ #This will loop over articles within xml
+  return render_template("home.html", articles=feed ['entries'])
+
+
