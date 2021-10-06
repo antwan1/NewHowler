@@ -36,7 +36,7 @@ def before_request():
     g.locale = str(get_locale())
 
 
-
+@app.route('/')
 @app.route('/index', methods=['GET', 'POST'])  #This will direct the user to the home page.
 @login_required
 def index():
@@ -101,15 +101,22 @@ def explore():
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
+    #If user is logged in, it redirects them to the home page.
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
+        #Username is validated if it exists in the database.
         if user is None or not user.check_password(form.password.data):
+            #However if there use doesn't exist in the database
+            # Or the password is incorrect, it will flash a message
             flash(_('Invalid username or password'))  
             return redirect(url_for('login'))  
         login_user(user, remember=form.remember_me.data)
+        #If user desired access to another page before logging in,
+        #After logging in, it will redirect the user to the previous page clicked.
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
+            #Otherwise it will make the user go to the home page
             next_page = url_for('index')
         return redirect(next_page)
     return render_template('login.html', title=_('Sign In'), form=form)
@@ -127,11 +134,15 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        #Once validation from forms is completed and validated
         user = User(username=form.username.data, email=form.email.data)
+        #Data will be implemented into the user database
         user.set_password(form.password.data)
         db.session.add(user)
         db.session.commit()
+        #Uses Bootstrap libary to indicate success
         flash(_('Congratulations, you are now a registered user!'))
+        #Then return the user back to the login page, to log them back in
         return redirect(url_for('login'))
     return render_template('register.html', title=_('Register'), form=form)
 
@@ -171,10 +182,13 @@ def reset_password(token):
 @app.route('/user/<username>')
 @login_required
 def user(username):
+    #This will search to see if the user exsist.
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
+
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
-        page, app.config['POSTS_PER_PAGE'], False)
+        page, app.config['POSTS_PER_PAGE'], False) 
+    #This should only display 10 post per page according to config
     next_url = url_for('user', username=user.username, page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
@@ -189,11 +203,14 @@ def user(username):
 def edit_profile():
     form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
+        #if it is current user, then they can input new user name
+        #And About them
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         db.session.commit()
         flash(_('Your changes have been saved.'))
         return redirect(url_for('edit_profile'))
+    #Otherwise it will return the previous inputs if validation has an error
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.about_me.data = current_user.about_me
@@ -208,14 +225,18 @@ def follow(username):
     if form.validate_on_submit():
         user = User.query.filter_by(username=username).first()
         if user is None:
+            #if user doesn't exsist when pressing follow
             flash(_('User %(username)s not found.', username=username))
             return redirect(url_for('index'))
         if user == current_user:
+            #This shouldn't happen, however if it occurs then the current user can't follow their selves.
             flash(_('You cannot follow yourself!'))
             return redirect(url_for('user', username=username))
+        #if validate_on_submit then the user following will be appended to a list of followers.
         current_user.follow(user)
         db.session.commit()
         flash(_('You are following %(username)s!', username=username))
+        #This will flash a message for success
         return redirect(url_for('user', username=username))
     else:
         return redirect(url_for('index'))
@@ -231,8 +252,10 @@ def unfollow(username):
             flash(_('User %(username)s not found.', username=username))
             return redirect(url_for('index'))
         if user == current_user:
+            #This shouldn't happen again, however this prevents a bug.
             flash(_('You cannot unfollow yourself!'))
             return redirect(url_for('user', username=username))
+        #if user unfollows, they will be removed from the current followers list of that specific user.
         current_user.unfollow(user)
         db.session.commit()
         flash(_('You are not following %(username)s.', username=username))
@@ -245,12 +268,14 @@ def unfollow(username):
 @app.route('/messages')
 @login_required
 def messages():
+    #Last time the user saw went to the messages tab
     current_user.last_message_read_time = datetime.utcnow()
     current_user.add_notification('unread_message_count', 0)
     db.session.commit()
     page = request.args.get('page', 1, type=int)
     messages = current_user.messages_received.order_by(
         Message.timestamp.desc()).paginate(
+            #This will paginate the messages
             page, current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('messages', page=messages.next_num) \
         if messages.has_next else None
@@ -380,7 +405,7 @@ def delete_job(post_id):
 
  #Place holder free RSS feeds, should be replaced with scientific news 
 
-RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/rss.xml', 
+RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/science_and_environment/rss.xml', 
              'cnn': 'http://rss.cnn.com/rss/edition.rss',
              'fox': 'http://feeds.foxnews.com/foxnews/latest',
              'iol': 'http://www.iol.co.za/cmlink/1.640'}

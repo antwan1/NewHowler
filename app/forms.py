@@ -56,7 +56,7 @@ class ResetPasswordForm(FlaskForm):
 class EditProfileForm(FlaskForm):
     username = StringField(_l('Username'), validators=[DataRequired()])
     about_me = TextAreaField(_l('About me'),
-                             validators=[Length(min=0, max=140)])
+                             validators=[Length(min=0, max=1500)])
     submit = SubmitField(_l('Submit'))
 
     def __init__(self, original_username, *args, **kwargs):
@@ -82,7 +82,7 @@ class PostForm(FlaskForm):
 
 class MessageForm(FlaskForm):
     message = TextAreaField(_l('Message'), validators=[
-        DataRequired(), Length(min=0, max=140)])
+        DataRequired(), Length(min=0, max=500)])
     submit = SubmitField(_l('Submit'))
 
 #Will ask details from user to post a jobs/opporunity.

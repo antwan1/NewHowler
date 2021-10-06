@@ -2,13 +2,15 @@
 {% block app_content %}
         
     
-   <body>
+   
    <h1>{{ _('Science Trends for, %(username)s!', username=current_user.username) }}</h1>
 <div class="page-header">
-  <h1>{{_('Search for Curiosty sake!')}}</h1>
+ 
 </div>
-   <form action="/" method="POST">
-  <input type="text" name="publication" placeholder="search" />
+<!-- This was working before, need to investigate!-->
+<!--Should enable for publications to be searched-->
+<form action="/" method="POST">
+  <input type="text" name="publication" placeholder="search for SciNews" />
   <input type="submit" value="Submit" />
 </form>
 

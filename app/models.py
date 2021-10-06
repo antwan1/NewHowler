@@ -28,10 +28,11 @@ class User(UserMixin,db.Model):
     password_hash = db.Column(db.String(128))
     posts = db.relationship('Post', backref='author', lazy='dynamic')
     job = db.relationship('Jobpost', backref='author', lazy='dynamic')  #This will also link with jobpost
-    about_me = db.Column(db.String(1500))
+    about_me = db.Column(db.String(1500)) #Places data about the user here
     last_seen = db.Column(db.DateTime, default=datetime.utcnow)
     followed = db.relationship(
-        #A self join is a join in which a table is joined with itself (which is also called Unary relationships), especially when the table has a FOREIGN KEY which references its own PRIMARY KEY.
+        #A self join is a join in which a table is joined with itself (which is also called Unary relationships), 
+        # especially when the table has a FOREIGN KEY which references its own PRIMARY KEY.
         'User', secondary=followers,                                                 
         primaryjoin=(followers.c.follower_id == id),                                
         secondaryjoin=(followers.c.followed_id == id),
@@ -50,6 +51,13 @@ class User(UserMixin,db.Model):
     notifications = db.relationship('Notification', backref='user',
                                     lazy='dynamic')
     
+
+    def new_messages(self):
+        last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
+        return Message.query.filter_by(recipient=self).filter(
+            Message.timestamp > last_read_time).count()
+
+
     def add_notification(self, name, data):
         self.notifications.filter_by(name=name).delete()
         n = Notification(name=name, payload_json=json.dumps(data), user=self)
@@ -58,10 +66,7 @@ class User(UserMixin,db.Model):
 
 
 
-    def new_messages(self):
-        last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
-        return Message.query.filter_by(recipient=self).filter(
-            Message.timestamp > last_read_time).count()
+   
 
     #Grabs email from user's gravatar account and compares it to their email to format gravatar pic into profile.
     def avatar(self, size):
