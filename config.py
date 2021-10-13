@@ -23,7 +23,5 @@ class Config(object):
     POSTS_PER_PAGE = 10 #This will be a config for pagination, this can be changed to slow down mass information if required.
 
     
-    LANGUAGES = ['en', 'es']  #Supported languages for the website.
-    MS_TRANSLATOR_KEY = os.environ.get('MS_TRANSLATOR_KEY') #Microsoft Azure Transaltion Api for translation services, however machine rejects any api
 
     

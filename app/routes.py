@@ -16,7 +16,7 @@ from flask import g
 from flask_babel import get_locale
 from langdetect import detect, LangDetectException
 from flask import jsonify
-from app.translate import translate
+
 import feedparser
 
 

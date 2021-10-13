@@ -1,5 +1,5 @@
-from app.models import Message, Post, User
-from app import app, db,cli
+
+from app import app 
 
 
 

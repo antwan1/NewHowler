@@ -71,10 +71,4 @@ if not app.debug:
 
 
 
-
-@babel.localeselector  #The Babel instance provides a localeselector decorator. The decorated function is invoked for each request to select a language translation to use for that request
-def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-    
 from app import routes, models, errors
