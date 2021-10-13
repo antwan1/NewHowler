@@ -17,11 +17,11 @@ class LoginForm(FlaskForm):
 
 #To gain new users in the registration.html, the the first password input will be compared against the hashed password.
 class RegistrationForm(FlaskForm):
-    username = StringField(_l('Username'), validators=[DataRequired()])
-    email = StringField(_l('Email'), validators=[DataRequired(), Email()])  #has email method to ensure is not anytype of input.
-    password = PasswordField(_l('Password'), validators=[DataRequired()])
+    username = StringField(_l('Enter a unique Username'), validators=[DataRequired()])
+    email = StringField(_l('Enter a unique email'), validators=[DataRequired(), Email()])  #has email method to ensure is not anytype of input.
+    password = PasswordField(_l('Enter a strong Password'), validators=[DataRequired()])
     password2 = PasswordField(
-        _l('Repeat Password'), validators=[DataRequired(),
+        _l('PleaseRepeat Password'), validators=[DataRequired(),
                                            EqualTo('password')])
     submit = SubmitField(_l('Register'))
 
@@ -29,13 +29,13 @@ class RegistrationForm(FlaskForm):
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
         if user is not None:
-            raise ValidationError(_('Please use a different username.'))
+            raise ValidationError(_('Username taken unfortunately, Please use a different username.'))
 
 #The function will check if email exsist in the database by checking Models (User)
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
-            raise ValidationError(_('Please use a different email address.'))
+            raise ValidationError(_('Email taken unfortunately, Please use a different email address.'))
 
 
 
@@ -48,16 +48,16 @@ class ResetPasswordRequestForm(FlaskForm):
 class ResetPasswordForm(FlaskForm):
     password = PasswordField(_l('Password'), validators=[DataRequired()])
     password2 = PasswordField(
-        _l('Repeat Password'), validators=[DataRequired(),
+        _l(' please repeat Password'), validators=[DataRequired(),
                                            EqualTo('password')])
     submit = SubmitField(_l('Request Password Reset'))
 
 
 class EditProfileForm(FlaskForm):
-    username = StringField(_l('Username'), validators=[DataRequired()])
-    about_me = TextAreaField(_l('About me'),
+    username = StringField(_l('Change your Username'), validators=[DataRequired()])
+    about_me = TextAreaField(_l('Tell us something about you'),
                              validators=[Length(min=0, max=1500)])
-    submit = SubmitField(_l('Submit'))
+    submit = SubmitField(_l('Howl yourself'))
 
     def __init__(self, original_username, *args, **kwargs):
         super(EditProfileForm, self).__init__(*args, **kwargs)
@@ -76,8 +76,8 @@ class EmptyForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    post = TextAreaField(_l('Express some Science!'), validators=[DataRequired()])
-    submit = SubmitField(_l('Howl'))
+    post = TextAreaField(_l('Express some Science today!'), validators=[DataRequired()])
+    submit = SubmitField(_l('Howl your findings'))
 
 
 class MessageForm(FlaskForm):

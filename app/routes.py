@@ -46,9 +46,9 @@ def before_request():
 # ***************************************************************************************/
 
 @app.route('/')
-@app.route('/index', methods=['GET', 'POST'])  #This will direct the user to the home page.
+@app.route('/homepage', methods=['GET', 'POST'])  #This will direct the user to the home page.
 @login_required
-def index():
+def home():
     form = PostForm()
          
     if form.validate_on_submit():
@@ -57,16 +57,16 @@ def index():
         db.session.add(post)
         db.session.commit()
         flash(_('Your post is now live!'))
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     page = request.args.get('page', 1, type=int)
     #pagination is adapted from https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ix-pagination
     posts = current_user.followed_posts().paginate(
         page, app.config['POSTS_PER_PAGE'], False)
-    next_url = url_for('index', page=posts.next_num) \
+    next_url = url_for('home', page=posts.next_num) \
         if posts.has_next else None
-    prev_url = url_for('index', page=posts.prev_num) \
+    prev_url = url_for('home', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title=_('Home'), form=form,
+    return render_template('home.html', title=_('Home'), form=form,
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
@@ -109,7 +109,7 @@ def explore():
         if posts.has_next else None
     prev_url = url_for('explore', page=posts.prev_num) \
         if posts.has_prev else None
-    return render_template('index.html', title=_('Explore'),
+    return render_template('home.html', title=_('Explore'),
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
@@ -129,9 +129,9 @@ def explore():
 # ***************************************************************************************/
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    # Access to log in page, however if there is a current user from the db is already logged, then it redirects to index
+    # Access to log in page, however if there is a current user from the db is already logged, then it redirects to home
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     #If user is logged in, it redirects them to the home page.
     form = LoginForm()
     if form.validate_on_submit():
@@ -148,7 +148,7 @@ def login():
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             #Otherwise it will make the user go to the home page
-            next_page = url_for('index')
+            next_page = url_for('home')
         return redirect(next_page)
     return render_template('login.html', title=_('Sign In'), form=form)
 
@@ -156,7 +156,7 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
 
 
@@ -172,7 +172,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         #Once validation from forms is completed and validated
@@ -191,7 +191,7 @@ def register():
 @app.route('/reset_password_request', methods=['GET', 'POST'])
 def reset_password_request():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -207,10 +207,10 @@ def reset_password_request():
 @app.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_password(token):
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     user = User.verify_reset_password_token(token)
     if not user:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         user.set_password(form.password.data)
@@ -302,7 +302,7 @@ def follow(username):
         if user is None:
             #if user doesn't exsist when pressing follow
             flash(_('User %(username)s not found.', username=username))
-            return redirect(url_for('index'))
+            return redirect(url_for('home'))
         if user == current_user:
             #This shouldn't happen, however if it occurs then the current user can't follow their selves.
             flash(_('You cannot follow yourself!'))
@@ -314,7 +314,7 @@ def follow(username):
         #This will flash a message for success
         return redirect(url_for('user', username=username))
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
 
 
 
@@ -334,7 +334,7 @@ def unfollow(username):
         user = User.query.filter_by(username=username).first()
         if user is None:
             flash(_('User %(username)s not found.', username=username))
-            return redirect(url_for('index'))
+            return redirect(url_for('home'))
         if user == current_user:
             #This shouldn't happen again, however this prevents a bug.
             flash(_('You cannot unfollow yourself!'))
@@ -345,7 +345,7 @@ def unfollow(username):
         flash(_('You are not following %(username)s.', username=username))
         return redirect(url_for('user', username=username))
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('home'))
 
 # /***************************************************************************************
 # *    Title: Mega Flask Tutorial
@@ -489,7 +489,7 @@ def delete_job(post_id):
     db.session.delete(post)
     db.session.commit()
     flash('Your post has been deleted!')
-    return redirect(url_for('index'))
+    return redirect(url_for('home'))
 
 # BBC_FEED = "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml"
 
@@ -513,7 +513,7 @@ def get_news():
                 publication = query.lower()
     feed = feedparser.parse(RSS_FEEDS[publication])
 
-    return render_template("home.html",articles=feed['entries'])
+    return render_template("news.html",articles=feed['entries'])
 
 
 

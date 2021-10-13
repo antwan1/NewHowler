@@ -1,98 +1,80 @@
-2021-10-02 10:41:25,760 ERROR: Exception on /messages [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 245, in messages
-    current_user.add_notification('unread_message_count', 0)
-AttributeError: 'User' object has no attribute 'add_notification'
-2021-10-02 10:41:26,502 ERROR: Exception on /messages [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 245, in messages
-    current_user.add_notification('unread_message_count', 0)
-AttributeError: 'User' object has no attribute 'add_notification'
-2021-10-02 10:43:34,857 ERROR: Exception on /messages [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 245, in messages
-    current_user.add_notification('unread_message_count', 0)
-AttributeError: 'User' object has no attribute 'add_notification'
-2021-10-02 10:43:40,801 ERROR: Exception on /messages [GET] [in c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py:1454]
-Traceback (most recent call last):
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 2070, in wsgi_app
-    response = self.full_dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask\app.py", line 1499, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "c:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\venv\lib\site-packages\flask_login\utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\routes.py", line 245, in messages
-    current_user.add_notification('unread_message_count', 0)
-AttributeError: 'User' object has no attribute 'add_notification'
-2021-10-02 10:54:40,831 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-02 10:54:41,719 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 07:47:51,406 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 07:47:52,284 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 07:51:10,307 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 07:55:48,521 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 07:57:29,768 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 07:58:27,153 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 07:58:37,710 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:02:41,562 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:07:45,474 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:11:01,723 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:11:38,824 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:11:50,421 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:22:34,219 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:22:35,006 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:23:26,227 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:24:01,396 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:25:14,364 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:28:03,642 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:30:30,516 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:31:05,843 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:36:18,048 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:37:25,601 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:37:39,455 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:41:40,727 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:49:28,530 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:50:18,766 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:50:19,566 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:53:11,130 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:53:23,932 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:53:55,066 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:55:51,973 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:56:36,975 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:57:31,589 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:57:47,646 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:58:55,167 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
-2021-10-05 08:59:47,550 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 09:31:53,590 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 09:31:54,501 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 09:37:51,476 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 09:37:52,282 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 09:43:13,064 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 09:44:13,104 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 10:27:49,723 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 10:28:13,240 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 10:29:51,813 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:03:20,600 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:03:21,440 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:09:24,155 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:17:55,603 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:17:56,377 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:49:58,033 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:52:18,561 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:53:47,578 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 11:54:52,882 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 16:52:25,981 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 16:52:26,836 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 17:33:55,684 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 17:34:14,924 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 19:46:52,839 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-05 19:46:53,640 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 07:22:10,789 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 07:27:11,217 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 07:27:12,030 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 07:28:13,540 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 07:28:14,339 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 07:39:31,950 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 07:39:32,780 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:18:07,191 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:18:07,200 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:23:53,128 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:23:54,016 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:43:46,781 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:43:46,816 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:43:47,680 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:46:49,239 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:46:49,246 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 10:46:49,674 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 11:20:24,462 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 11:20:24,732 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 11:20:24,734 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 12:39:54,036 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 12:39:54,037 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 12:39:54,037 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 14:49:20,109 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 14:49:20,945 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 14:58:48,666 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 14:58:48,678 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 14:58:48,860 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 14:58:49,453 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:12:34,905 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:12:35,246 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:12:35,297 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:12:35,610 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:21:12,583 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:21:12,605 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:21:13,404 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:21:13,420 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:27:42,994 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:27:43,019 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:27:43,581 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:27:43,592 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:30:18,132 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:30:18,278 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:30:18,849 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 15:30:18,860 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 16:26:55,681 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 16:26:55,903 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 16:26:55,935 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 16:26:56,171 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 17:46:52,188 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 17:46:52,237 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 17:46:52,254 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 21:15:04,563 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 21:15:04,581 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 21:15:18,354 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]
+2021-10-06 21:15:39,500 INFO: Howler startup [in C:\Users\anton\Downloads\Dissertation Folder\NewHowler-1\app\__init__.py:68]

@@ -1,56 +1,31 @@
 {% extends "base.html" %}
-
-
 {% block app_content %}
+        
     
-<div class="jumbotron">
-  <h1>Discover What Data is out there</h1>
-  <p>...</p>
-  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
-</div>
+   
+   <h1>{{ _('Science Trends for %(username)s!', username=current_user.username) }}</h1>
 <div class="page-header">
-  <h1>Trends of Science <small>Subtext for header</small></h1>
-</div>
-<br>
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <img src="..." alt="...">
-      <div class="caption">
-        <h3>Thumbnail label</h3>  <!-- Place holder for breaking scientific news-->
-        <p>...</p>
-        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-<section>
-<br>
-<br>
- <div class="container">
- <div class = "row">
-
-
-        <b>{{title}}</b><br />
-        <i>{{published}}</i><br />
-        <p>{{summary}}</p>
-
-
  
- </div>
- </div>
-</section>
+</div>
+<!-- This was working before, need to investigate!-->
+<!--Should enable for publications to be searched-->
+<form action="/" method="POST">
+  <input type="text" name="publication" placeholder="search for SciNews" />
+  <input type="submit" value="Submit" />
+</form>
 
-     
+
+{% for article in articles %}
+<div class="media">
+  <div class="media-left media-middle">
+   <img class="media-object" src="" alt="...">
+<b><a class="media-heading" href="{{article.link}}">{{article.title}}</a></b><br />
+        <i>{{article.published}}</i><br />
+        <p>{{article.summary}}</p>
+        <hr />
+     </div>
+</div>
+        
+    {% endfor %}
 
 {% endblock %}
-
-
-
-
-
-
-
-
-
-

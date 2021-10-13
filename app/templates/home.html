@@ -1,31 +1,27 @@
 {% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
 {% block app_content %}
-        
-    
-   
-   <h1>{{ _('Science Trends for %(username)s!', username=current_user.username) }}</h1>
-<div class="page-header">
- 
-</div>
-<!-- This was working before, need to investigate!-->
-<!--Should enable for publications to be searched-->
-<form action="/" method="POST">
-  <input type="text" name="publication" placeholder="search for SciNews" />
-  <input type="submit" value="Submit" />
-</form>
-
-
-{% for article in articles %}
-<div class="media">
-  <div class="media-left media-middle">
-   <img class="media-object" src="" alt="...">
-<b><a class="media-heading" href="{{article.link}}">{{article.title}}</a></b><br />
-        <i>{{article.published}}</i><br />
-        <p>{{article.summary}}</p>
-        <hr />
-     </div>
-</div>
-        
+    <h1>{{ _('Time to discover science, %(username)s!', username=current_user.username) }}</h1> <!--Home page and displays users name-->
+    {% if form %}
+    {{ wtf.quick_form(form) }}
+    <br>
+    {% endif %}
+    {% for post in posts %}
+        {% include '__post.html' %}
     {% endfor %}
-
+    <nav aria-label="...">
+        <ul class="pager">
+            <li class="previous{% if not prev_url %} disabled{% endif %}">
+                <a href="{{ prev_url or '#' }}">
+                    <span aria-hidden="true">&larr;</span> {{ _('Newer posts') }}
+                </a>
+            </li>
+            <li class="next{% if not next_url %} disabled{% endif %}">
+                <a href="{{ next_url or '#' }}">
+                    {{ _('Older posts') }} <span aria-hidden="true">&rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
 {% endblock %}
