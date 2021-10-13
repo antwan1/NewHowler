@@ -88,5 +88,5 @@ class MessageForm(FlaskForm):
 #Will ask details from user to post a jobs/opporunity.
 class JobForm(FlaskForm):
     title = StringField(_l('Company Name'), validators =[DataRequired()])
-    content = TextAreaField(_l('Requirements'), validators =[DataRequired()])
+    content = TextAreaField(_l('Requirements'), validators =[Length(min=0, max=1500)])
     submit = SubmitField(_l('Submit'))

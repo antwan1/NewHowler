@@ -3,10 +3,17 @@ import unittest
 from app import app, db
 from app.models import User, Post
 
+# *************************************************
+# * Title: <The Flask Mega-Tutorial Part VIII>
+# * Author: <Miguel Grinberg>
+# * Date: <10/09/2021>
+# * Code version: <1.0>
+# * Availability: <https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers> 
+# *************************************************
 class UserModelCase(unittest.TestCase):
     def setUp(self): # instance method to set initial state before each test method is run.
 
-
+        #Address of the database.
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
         db.create_all()
 
@@ -21,12 +28,16 @@ class UserModelCase(unittest.TestCase):
         self.assertTrue(u.check_password('1234'))
 
 
-#This is an example placed by corey schafer on youtube
+
+
+
+
+
     def test_avatar(self):
-        u = User(username='john', email='john@example.com')
-        self.assertEqual(u.avatar(128), ('https://www.gravatar.com/avatar/'  #if need to test on own profile pic,
-                                                                               # use 'https://www.gravatar.com/avatar/f6fdc1d3c21b4b1fedb1958d6370d49c' with antoniore385@gmail.com     
-                                         'd4c74594d841139328695756648b6bd6'
+        u = User(username='antonio', email='antoniore385@gmail.com')
+        self.assertEqual(u.avatar(128), ('https://www.gravatar.com/avatar/'  
+                                                                                  
+                                         'f6fdc1d3c21b4b1fedb1958d6370d49c'
                                          '?d=identicon&s=128'))
 
 
@@ -40,16 +51,7 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(u1.followed.all(), [])
         self.assertEqual(u1.followers.all(), [])
 
-#To test emails.
-# with mail.record_messages() as outbox:
 
-#     mail.send_message(subject='testing',
-#                       body='test',
-#                       recipients=emails)
-
-#     assert len(outbox) == 1
-#     assert outbox[0].subject == "testing"
-#Antonio should follow palla
         u1.follow(u2)
         db.session.commit()
         self.assertTrue(u1.is_following(u2))
@@ -63,6 +65,20 @@ class UserModelCase(unittest.TestCase):
         self.assertFalse(u1.is_following(u2))
         self.assertEqual(u1.followed.count(), 0)
         self.assertEqual(u2.followers.count(), 0)
+
+
+
+#To test emails.
+# with mail.record_messages() as outbox:
+
+#     mail.send_message(subject='testing',
+#                       body='test',
+#                       recipients=emails)
+
+#     assert len(outbox) == 1
+#     assert outbox[0].subject == "testing"
+#Antonio should follow palla
+
 
     def test_follow_posts(self):
         # create four users
@@ -101,6 +117,10 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(f2, [p2, p3])
         self.assertEqual(f3, [p3, p4])
         self.assertEqual(f4, [p4])
-#f1 is not appending the right followers. 
+
+
+
+
+ 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

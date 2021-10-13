@@ -14,11 +14,32 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def load_user(id):
     return User.query.get(int(id))
 
+ # /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+# *
+# ***************************************************************************************/   
+
 #The Unary Table, full of users. 
 followers = db.Table('followers',
     db.Column('follower_id', db.Integer, db.ForeignKey('user.id')),
     db.Column('followed_id', db.Integer, db.ForeignKey('user.id'))
 )
+
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iv-database
+# *
+# ***************************************************************************************/   
+
 #This component of the database model is supposed to retrieve data from registered users, 
 #provide hashing for passwords, post user information in the profile section, and use it as a foreign key to retrieve their posts or followers
 class User(UserMixin,db.Model):
@@ -38,11 +59,22 @@ class User(UserMixin,db.Model):
         secondaryjoin=(followers.c.followed_id == id),
         backref=db.backref('followers', lazy='dynamic'), lazy='dynamic')
         # To join a table itself means that each row of the table is combined with itself and with every other row of the table.
+
+
     
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
 
     messages_sent = db.relationship('Message',
                                     foreign_keys='Message.sender_id',
                                     backref='author', lazy='dynamic')
+        
     messages_received = db.relationship('Message',
                                         foreign_keys='Message.recipient_id',
                                         backref='recipient', lazy='dynamic')
@@ -52,12 +84,29 @@ class User(UserMixin,db.Model):
                                     lazy='dynamic')
     
 
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
     def new_messages(self):
         last_read_time = self.last_message_read_time or datetime(1900, 1, 1)
         return Message.query.filter_by(recipient=self).filter(
             Message.timestamp > last_read_time).count()
 
 
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
+#Does not work
     def add_notification(self, name, data):
         self.notifications.filter_by(name=name).delete()
         n = Notification(name=name, payload_json=json.dumps(data), user=self)
@@ -109,7 +158,8 @@ class User(UserMixin,db.Model):
 
   
 
-
+#This is not really implemented fully
+#This is adapted from https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-x-email-support
     def get_reset_password_token(self, expires_in=600):
         return jwt.encode(
             {'reset_password': self.id, 'exp': time() + expires_in},
@@ -131,17 +181,29 @@ class User(UserMixin,db.Model):
 
 
 
+#Model class for posts
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    language = db.Column(db.String(5))
+    
 
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
 
+
+
+ 
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     sender_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -152,7 +214,16 @@ class Message(db.Model):
     def __repr__(self):
         return '<Message {}>'.format(self.body)
 
-
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
+#Tried to make this work by following the tutorial and understand how it can be implemented.
+#However it does not work properly and will continue to work on it.
 class Notification(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(128), index=True)
@@ -163,6 +234,8 @@ class Notification(db.Model):
     def get_data(self):
         return json.loads(str(self.payload_json))
 
+
+#Model for jobsposting.
 class Jobpost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)

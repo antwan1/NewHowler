@@ -36,19 +36,21 @@ def before_request():
     g.locale = str(get_locale())
 
 
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 20/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ix-pagination
+# *
+# ***************************************************************************************/
+
 @app.route('/')
 @app.route('/index', methods=['GET', 'POST'])  #This will direct the user to the home page.
 @login_required
 def index():
     form = PostForm()
-    if form.validate_on_submit():
-        try:
-            language = detect(form.post.data)  #each time a post is submitted, I run the text through the detect() function to try to determine the language
-                                                #However, this service does not function as the api from azure will not be accepted this machine.
-        except LangDetectException:
-            language = ''
-        post = Post(body=form.post.data, author=current_user,
-                    language=language)
+         
     if form.validate_on_submit():
         post = Post(body=form.post.data, author=current_user)  
         #Once form is submitted, it will be added to the database.
@@ -57,6 +59,7 @@ def index():
         flash(_('Your post is now live!'))
         return redirect(url_for('index'))
     page = request.args.get('page', 1, type=int)
+    #pagination is adapted from https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ix-pagination
     posts = current_user.followed_posts().paginate(
         page, app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('index', page=posts.next_num) \
@@ -73,6 +76,7 @@ def index():
 def opportunity():
     page = request.args.get('page', 1, type=int)
     posts = Jobpost.query.order_by(Jobpost.date_posted.desc()).paginate(
+        #pagination is adapted from https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ix-pagination
         page, app.config['POSTS_PER_PAGE'], False) #Sets the amount of post to placed from config.py
     next_url = url_for('explore', page=posts.next_num) \
         if posts.has_next else None
@@ -82,11 +86,24 @@ def opportunity():
     return render_template('oppor.html' , title=_('create job'), posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 #If user clicks on 'Explore', Html will render followed post from current users.
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 20/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ix-pagination
+# *
+# ***************************************************************************************/
 @app.route('/explore')
 @login_required
 def explore():
+    #
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
+        
+        
         page, app.config['POSTS_PER_PAGE'], False) #Sets the amount of post to placed from config.py
     next_url = url_for('explore', page=posts.next_num) \
         if posts.has_next else None
@@ -96,9 +113,23 @@ def explore():
                            posts=posts.items, next_url=next_url,
                            prev_url=prev_url)
 
-# Access to log in page, however if there is a current user from the db is already logged, then it redirects to index
+
+
+
+
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    # Access to log in page, however if there is a current user from the db is already logged, then it redirects to index
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     #If user is logged in, it redirects them to the home page.
@@ -127,6 +158,16 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -179,23 +220,46 @@ def reset_password(token):
     return render_template('reset_password.html', form=form)
 
 
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 15/09/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars
+# *
+# ***************************************************************************************/
+
 @app.route('/user/<username>')
 @login_required
 def user(username):
-    #This will search to see if the user exsist.
+    #This will search to see if the user exsist or get a 404 custom error message
     user = User.query.filter_by(username=username).first_or_404()
     page = request.args.get('page', 1, type=int)
-
+#Paginate all of the current users posts in order
     posts = user.posts.order_by(Post.timestamp.desc()).paginate(
         page, app.config['POSTS_PER_PAGE'], False) 
-    #This should only display 10 post per page according to config
+    #This should only display 10 post per page according to config, if theres most than 10, then it will paginate
     next_url = url_for('user', username=user.username, page=posts.next_num) \
         if posts.has_next else None
     prev_url = url_for('user', username=user.username, page=posts.prev_num) \
         if posts.has_prev else None
     form = EmptyForm()
+    #if theres nop previous post, it will render back to the user's profile page.
     return render_template('user.html', user=user, posts=posts.items,
                            next_url=next_url, prev_url=prev_url, form=form)
+
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 15/09/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars
+# *
+# ***************************************************************************************/
+
 
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
@@ -203,12 +267,12 @@ def user(username):
 def edit_profile():
     form = EditProfileForm(current_user.username)
     if form.validate_on_submit():
-        #if it is current user, then they can input new user name
-        #And About them
+        #Which ever input is added to the form, will become the new username and personal information.
         current_user.username = form.username.data
         current_user.about_me = form.about_me.data
         db.session.commit()
-        flash(_('Your changes have been saved.'))
+        #This only flashes if WTForms believes it is successful.
+        flash(_('Your inputs have been updated'))
         return redirect(url_for('edit_profile'))
     #Otherwise it will return the previous inputs if validation has an error
     elif request.method == 'GET':
@@ -218,6 +282,17 @@ def edit_profile():
                            form=form)
 
 
+
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 23/09/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers
+# *
+# ***************************************************************************************/
 @app.route('/follow/<username>', methods=['POST'])
 @login_required
 def follow(username):
@@ -242,6 +317,15 @@ def follow(username):
         return redirect(url_for('index'))
 
 
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 23/09/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers
+# *
+# ***************************************************************************************/
 @app.route('/unfollow/<username>', methods=['POST'])
 @login_required
 def unfollow(username):
@@ -263,7 +347,14 @@ def unfollow(username):
     else:
         return redirect(url_for('index'))
 
-
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/
 
 @app.route('/messages')
 @login_required
@@ -287,12 +378,12 @@ def messages():
 
 
 
-
+#Renders the about us on from the footer
 @app.route('/about')
 def about():
     return render_template('about.html')
 
-
+#Renders FAQ questions from the footer
 @app.route('/FAQ')
 def FAQ():
     return render_template('FAQ.html')
@@ -303,6 +394,17 @@ def FAQ():
 def before_request():
     
     g.locale = str(get_locale())
+
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/
 
 @app.route('/send_message/<recipient>', methods=['GET', 'POST'])
 @login_required
@@ -322,20 +424,8 @@ def send_message(recipient):
                            form=form, recipient=recipient)
 
 
-@app.route('/translate', methods=['POST'])
-@login_required
-def translate_text():
-    return jsonify({'text': translate(request.form['text'],
-                                      request.form['source_language'],
-                                      request.form['dest_language'])})
 
 
-@app.route('/user/<username>/popup')
-@login_required
-def user_popup(username):
-    user = User.query.filter_by(username=username).first_or_404()
-    form = EmptyForm()
-    return render_template('user_popup.html', user=user, form=form)
 
 @app.route('/notifications')
 @login_required
@@ -382,7 +472,7 @@ def update_job (job_id):
         post.title = form.title.data
         post.content = form.content.data  #if form is valid, jobpost will update
         db.session.commit()  
-        flash('youre post has been updated!', 'success')   
+        flash('youre post has been updated!')   
         return redirect(url_for('job', job_id = post.id ))  
     elif request.method == 'GET':                               
         form.title.data = post.title
@@ -398,7 +488,7 @@ def delete_job(post_id):
         abort(403)
     db.session.delete(post)
     db.session.commit()
-    flash('Your post has been deleted!', 'success')
+    flash('Your post has been deleted!')
     return redirect(url_for('index'))
 
 # BBC_FEED = "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml"
@@ -422,6 +512,7 @@ def get_news():
     else:
                 publication = query.lower()
     feed = feedparser.parse(RSS_FEEDS[publication])
+
     return render_template("home.html",articles=feed['entries'])
 
 
