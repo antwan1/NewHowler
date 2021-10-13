@@ -106,7 +106,7 @@ class User(UserMixin,db.Model):
 # *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
 # *
 # ***************************************************************************************/   
-#Does not work
+#Does not work will use this to add to future work
     def add_notification(self, name, data):
         self.notifications.filter_by(name=name).delete()
         n = Notification(name=name, payload_json=json.dumps(data), user=self)

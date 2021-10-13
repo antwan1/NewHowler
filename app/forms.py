@@ -21,7 +21,7 @@ class RegistrationForm(FlaskForm):
     email = StringField(_l('Enter a unique email'), validators=[DataRequired(), Email()])  #has email method to ensure is not anytype of input.
     password = PasswordField(_l('Enter a strong Password'), validators=[DataRequired()])
     password2 = PasswordField(
-        _l('PleaseRepeat Password'), validators=[DataRequired(),
+        _l('Please Repeat Password'), validators=[DataRequired(),
                                            EqualTo('password')])
     submit = SubmitField(_l('Register'))
 
