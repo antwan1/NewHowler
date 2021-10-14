@@ -25,21 +25,48 @@ class RegistrationForm(FlaskForm):
                                            EqualTo('password')])
     submit = SubmitField(_l('Register'))
 
+
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
 #The function will check if user name exsist in the database by checking Models (User)
     def validate_username(self, username):
+        #Query through user model for the first result of username equaling to the input of the of user. 
         user = User.query.filter_by(username=username.data).first()
+        #if user doesn't exist, then it will raise a validation error.'
         if user is not None:
             raise ValidationError(_('Username taken unfortunately, Please use a different username.'))
 
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
 #The function will check if email exsist in the database by checking Models (User)
     def validate_email(self, email):
+        #Query through user model for the first result of emails equaling to the input of the of user. 
         user = User.query.filter_by(email=email.data).first()
+        #if email data doesn't exist', then it will raise a validation error
         if user is not None:
             raise ValidationError(_('Email taken unfortunately, Please use a different email address.'))
 
 
 
-#Request for Email, this class is temprorarily supressed
+
+
+#Request for Email, this class is temprorarily supressed for testing
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField(_l('Email'), validators=[DataRequired(), Email()])
     submit = SubmitField(_l('Request Password Reset'))

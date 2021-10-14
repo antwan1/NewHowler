@@ -70,14 +70,16 @@ class User(UserMixin,db.Model):
 # *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
 # *
 # ***************************************************************************************/   
-
+# will return messages sent by the given user.
     messages_sent = db.relationship('Message',
                                     foreign_keys='Message.sender_id',
                                     backref='author', lazy='dynamic')
-        
+
+     #Will return messages received by the given user.   
     messages_received = db.relationship('Message',
                                         foreign_keys='Message.recipient_id',
                                         backref='recipient', lazy='dynamic')
+    #To be used as an indicator later to refere when was the last time the user has been to the messages tab.
     last_message_read_time = db.Column(db.DateTime)
 
     notifications = db.relationship('Notification', backref='user',
