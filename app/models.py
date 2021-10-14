@@ -82,8 +82,7 @@ class User(UserMixin,db.Model):
     #To be used as an indicator later to refere when was the last time the user has been to the messages tab.
     last_message_read_time = db.Column(db.DateTime)
 
-    notifications = db.relationship('Notification', backref='user',
-                                    lazy='dynamic')
+    
     
 
 # /***************************************************************************************
@@ -109,12 +108,7 @@ class User(UserMixin,db.Model):
 # *
 # ***************************************************************************************/   
 #Does not work will use this to add to future work
-    def add_notification(self, name, data):
-        self.notifications.filter_by(name=name).delete()
-        n = Notification(name=name, payload_json=json.dumps(data), user=self)
-        db.session.add(n)
-        return n
-
+  
 
 
    
@@ -226,15 +220,7 @@ class Message(db.Model):
 # ***************************************************************************************/   
 #Tried to make this work by following the tutorial and understand how it can be implemented.
 #However it does not work properly and will continue to work on it.
-class Notification(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128), index=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    timestamp = db.Column(db.Float, index=True, default=time)
-    payload_json = db.Column(db.Text)
 
-    def get_data(self):
-        return json.loads(str(self.payload_json))
 
 
 #Model for jobsposting.
