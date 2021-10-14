@@ -8,7 +8,7 @@ from werkzeug.urls import url_parse
 from flask_babel import _, get_locale
 from wtforms import form
 from app import app, db
-from app.forms import JobForm, LoginForm, MessageForm, RegistrationForm, EditProfileForm, \
+from app.forms import ApplicationForm, JobForm, LoginForm, MessageForm, RegistrationForm, EditProfileForm, \
     EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import Jobpost, Message,  User, Post
 
@@ -335,7 +335,7 @@ def messages():
     page = request.args.get('page', 1, type=int)
     messages = current_user.messages_received.order_by(
         Message.timestamp.desc()).paginate(
-            #This will paginate the messages
+            #This will paginate the messages like the post above.
             page, current_app.config['POSTS_PER_PAGE'], False)
     next_url = url_for('messages', page=messages.next_num) \
         if messages.has_next else None
@@ -375,7 +375,7 @@ def before_request():
 # *
 # ***************************************************************************************/
 
-@app.route('/send_message/<recipient>', methods=['GET', 'POST'])
+@app.route('/send_message/<recipient>', methods=['GET', 'POST']) 
 @login_required
 def send_message(recipient):
     user = User.query.filter_by(username=recipient).first_or_404()
@@ -392,7 +392,15 @@ def send_message(recipient):
                            form=form, recipient=recipient)
 
 
-
+@app.route('/application/<application>', methods=['GET', 'POST'])
+@login_required
+def application(application):
+    job=Jobpost.query.filter_by(id=application).first_or_404()
+    form=ApplicationForm()
+    if form.validate_on_submit():
+        flash(_('Your application has been sent.'))
+        return redirect(url_for('application', job =application))
+    return redirect(url_for('apply.html', title=_('Create Applicaiton'), form=form, application=application))    
 
 
 
@@ -414,12 +422,13 @@ def new_jobs():
 @app.route('/job/<int:job_id>')
 def job (job_id):
     post =Jobpost.query.get_or_404(job_id)  #Gets the id of the post clicked.
-    return render_template('job.html', title=post.title, post=post)
+    return render_template('job.html', title=post.title, post=post)#Redirects the user to the only post. 
 
 
 
 app.route('/job/<int:job_id>/update', methods=['GET', 'POST'])
 @login_required
+#Will improve on the CRUD system.
 def update_job (job_id):
     post =Jobpost.query.get_or_404(job_id)
     if post.author != current_user:
@@ -438,6 +447,7 @@ def update_job (job_id):
             form=form, legend = 'Update Post' )
 
 @app.route("/post/<int:job_id>/delete", methods=['POST'])
+#Will improve on the CRUD system.
 @login_required
 def delete_job(post_id):
     post = Jobpost.query.get_or_404(post_id)
@@ -465,10 +475,11 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/science_and_environment/rss.xm
 def get_news():
     query = request.form.get("publication")
     if not query or query.lower() not in RSS_FEEDS:
-                publication = "bbc"
+                publication = "bbc" #This will set the default RSS feed to bbc news science.
     else:
-                publication = query.lower()
+                publication = query.lower()# Else the user can search for publications however it will remove any capitals. 
     feed = feedparser.parse(RSS_FEEDS[publication])
+    #To loop through all feeds in the RSS targeted. 
 
     return render_template("news.html",articles=feed['entries'])
 
