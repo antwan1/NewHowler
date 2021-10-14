@@ -11,7 +11,7 @@ from app import app, db
 from app.forms import JobForm, LoginForm, MessageForm, RegistrationForm, EditProfileForm, \
     EmptyForm, PostForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import Jobpost, Message,  User, Post
-from app.email import send_password_reset_email
+
 from flask import g
 from flask_babel import get_locale
 from langdetect import detect, LangDetectException
@@ -188,36 +188,6 @@ def register():
     return render_template('register.html', title=_('Register'), form=form)
 
 
-@app.route('/reset_password_request', methods=['GET', 'POST'])
-def reset_password_request():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    form = ResetPasswordRequestForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        if user:
-            send_password_reset_email(user)
-        flash(
-            _('Check your email for the instructions to reset your password'))
-        return redirect(url_for('login'))
-    return render_template('reset_password_request.html',
-                           title=_('Reset Password'), form=form)
-
-
-@app.route('/reset_password/<token>', methods=['GET', 'POST'])
-def reset_password(token):
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    user = User.verify_reset_password_token(token)
-    if not user:
-        return redirect(url_for('home'))
-    form = ResetPasswordForm()
-    if form.validate_on_submit():
-        user.set_password(form.password.data)
-        db.session.commit()
-        flash(_('Your password has been reset.'))
-        return redirect(url_for('login'))
-    return render_template('reset_password.html', form=form)
 
 
 

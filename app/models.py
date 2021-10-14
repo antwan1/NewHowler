@@ -154,25 +154,7 @@ class User(UserMixin,db.Model):
 
   
 
-#This is not really implemented fully
-#This is adapted from https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-x-email-support
-    def get_reset_password_token(self, expires_in=600):
-        return jwt.encode(
-            {'reset_password': self.id, 'exp': time() + expires_in},
-            app.config['SECRET_KEY'], algorithm='HS256')
-  #When the user clicks on the emailed link, the token is going to be sent back to the application as part of the URL, and the first thing the view function that handles this URL will do is to verify it. If the signature is valid, then the user can be identified by the ID stored in the payload. Once the user's identity is known, the application can ask for a new password and set it on the user's account.
-    @staticmethod
-    def verify_reset_password_token(token):
-        try:
-            id = jwt.decode(token, app.config['SECRET_KEY'],
-                            algorithms=['HS256'])['reset_password']
-        except:
-            #Since these tokens belong to users, I'm going to write the token generation and verification functions as methods in the User model:
-#The get_reset_password_token() function returns a JWT token as a string, which is generated directly by the jwt.encode() function.
-            return
-        return User.query.get(id)
-    def __repr__(self):
-        return '<User {}>'.format(self.username)
+
 
 
 
