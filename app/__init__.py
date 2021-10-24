@@ -32,13 +32,6 @@ babel= Babel(app)
 
 
 
-#babel = Babel(app)    #Check flask-babel documentation to change languages at will etc.
-
-
-
-#Check how to use SMTPHandler at  https://docs.python.org/3.6/library/logging.handlers.html#smtphandler
- #This is to send logs by email on errors.    
-
 
 
 

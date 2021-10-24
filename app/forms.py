@@ -103,6 +103,17 @@ class EditProfileForm(FlaskForm):
         #The username is saved as instance variable
         self.original_username = original_username
 
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 10/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vii-error-handling
+# *
+# ***************************************************************************************/
+
 #The function will check if user name exsist in the database by checking Models (User)
     def validate_username(self, username):
         #The orginal user name is checked to create any duplicates.

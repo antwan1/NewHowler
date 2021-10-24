@@ -5,6 +5,7 @@ from app.models import User, Post
 
 # *************************************************
 # * Title: <The Flask Mega-Tutorial Part VIII>
+        ##LEARNED FROM##
 # * Author: <Miguel Grinberg>
 # * Date: <10/09/2021>
 # * Code version: <1.0>
@@ -30,7 +31,14 @@ class UserModelCase(unittest.TestCase):
 
 
 
-
+# *************************************************
+# * Title: <The Flask Mega-Tutorial Part VIII>
+        ##LEARNED FROM##
+# * Author: <Miguel Grinberg>
+# * Date: <10/09/2021>
+# * Code version: <1.0>
+# * Availability: <https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers> 
+# *************************************************
 
 
     def test_avatar(self):
@@ -40,6 +48,15 @@ class UserModelCase(unittest.TestCase):
                                          'f6fdc1d3c21b4b1fedb1958d6370d49c'
                                          '?d=identicon&s=128'))
 
+
+# *************************************************
+# * Title: <The Flask Mega-Tutorial Part VIII>
+        ##LEARNED FROM##
+# * Author: <Miguel Grinberg>
+# * Date: <10/09/2021>
+# * Code version: <1.0>
+# * Availability: <https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers> 
+# *************************************************
 
 #Add users to test follow
     def test_follow(self):
@@ -80,6 +97,15 @@ class UserModelCase(unittest.TestCase):
 #Antonio should follow palla
 
 
+
+# *************************************************
+# * Title: <The Flask Mega-Tutorial Part VIII>
+        ##LEARNED FROM##
+# * Author: <Miguel Grinberg>
+# * Date: <10/09/2021>
+# * Code version: <1.0>
+# * Availability: <https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers> 
+# *************************************************
     def test_follow_posts(self):
         # create four users
         u1 = User(username='antonio', email='antonio@example.com')

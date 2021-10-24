@@ -25,11 +25,19 @@ import feedparser
 
 
 
-
+# /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 05/09/2021
+# *    Code version: 2.0
+# *    Availability: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# ***************************************************************************************/
    
 
 @app.before_request  #Checks if user is logged to know when they have been last seen.
 def before_request():
+    #If it is current user then it will check the current time when user was online with UTC.
     if current_user.is_authenticated:
         current_user.last_seen = datetime.utcnow()
         db.session.commit()
@@ -37,6 +45,7 @@ def before_request():
 
 
 # /***************************************************************************************
+            ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 20/08/2021
@@ -89,6 +98,7 @@ def opportunity():
 
 
 # /***************************************************************************************
+            ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 20/08/2021
@@ -99,11 +109,11 @@ def opportunity():
 @app.route('/explore')
 @login_required
 def explore():
-    #
+    
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.timestamp.desc()).paginate(
         
-        
+        #Paginate all query post from unfollowed users.
         page, app.config['POSTS_PER_PAGE'], False) #Sets the amount of post to placed from config.py
     next_url = url_for('explore', page=posts.next_num) \
         if posts.has_next else None
@@ -120,6 +130,7 @@ def explore():
 
 
 # /***************************************************************************************
+                ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 02/08/2021
@@ -161,6 +172,7 @@ def logout():
 
 
 # /***************************************************************************************
+            ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 02/08/2021
@@ -192,6 +204,7 @@ def register():
 
 
 # /***************************************************************************************
+            ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 15/09/2021
@@ -222,6 +235,7 @@ def user(username):
 
 
 # /***************************************************************************************
+            ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 15/09/2021
@@ -256,6 +270,7 @@ def edit_profile():
 
 
 # /***************************************************************************************
+            ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 23/09/2021
@@ -289,6 +304,7 @@ def follow(username):
 
 
 # /***************************************************************************************
+            ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 23/09/2021
@@ -318,6 +334,7 @@ def unfollow(username):
         return redirect(url_for('home'))
 
 # /***************************************************************************************
+        ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 01/10/2021
@@ -367,6 +384,7 @@ def before_request():
 
 
 # /***************************************************************************************
+                ##LEARNED FROM##
 # *    Title: Mega Flask Tutorial
 # *    Author: Miguel Grinberg
 # *    Date: 01/10/2021
@@ -379,22 +397,28 @@ def before_request():
 @login_required
 def send_message(recipient):
     user = User.query.filter_by(username=recipient).first_or_404()
+    #Will search through the database to find the other users.
     form = MessageForm()
     if form.validate_on_submit():
+        #If message input is valid, then a message "post " would be created in to the table of message database
         msg = Message(author=current_user, recipient=user,
                       body=form.message.data)
         db.session.add(msg)
         db.session.commit()
-       
+       #To Indicate to the user that the message has been succesful and testing purposes.
         flash(_('Your message has been sent.'))
         return redirect(url_for('user', username=recipient))
     return render_template('send_message.html', title=_('Send Message'),
                            form=form, recipient=recipient)
 
 
+
+#This application form is inspired by the messages tab. 
 @app.route('/application/<application>', methods=['GET', 'POST'])
 @login_required
 def application(application):
+    #will create an application section soon
+    #This should send an application to the employer. 
     job=Jobpost.query.filter_by(id=application).first_or_404()
     form=ApplicationForm()
     if form.validate_on_submit():
@@ -403,14 +427,22 @@ def application(application):
     return redirect(url_for('apply.html', title=_('Create Applicaiton'), form=form, application=application))    
 
 
-
+# /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Flask Tutorial 
+# *    Author: Corey Schaffer
+# *    Date: 07/10/2021
+# *    Code version: N/A
+# *    Availability:https://www.youtube.com/watch?v=u0oDDZrDz9U&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=8
+# *
+# ***************************************************************************************/
 
 @app.route('/job/new', methods=['GET', 'POST'])
 @login_required
 def new_jobs():
     form = JobForm()
     if form.validate_on_submit():
-        
+        #Once validated the job will be submitted to the opportunities page. 
         post = Jobpost(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()

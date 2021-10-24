@@ -10,6 +10,8 @@ from app import app
 from hashlib import md5
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
+#This will load the user consistently
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -129,18 +131,59 @@ class User(UserMixin,db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
     #if user clicks the follow button and they're not following user, they will be appended to the array of followed of the user following.
     def follow(self, user):
         if not self.is_following(user):
             self.followed.append(user)
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
 #Removes user from followed list
     def unfollow(self, user):
         if self.is_following(user):
             self.followed.remove(user)
+
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
 #Counts how many users the current_user is following.
+
     def is_following(self, user):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/   
 
 #The function that enables post in the home page to display post by followed users through a join. 
     def followed_posts(self):
@@ -199,11 +242,7 @@ class Message(db.Model):
 # *    Code version: 2.0
 # *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
 # *
-# ***************************************************************************************/   
-#Tried to make this work by following the tutorial and understand how it can be implemented.
-#However it does not work properly and will continue to work on it.
-
-
+# ***************************************************************************************/  
 
 #Model for jobsposting.
 class Jobpost(db.Model):
