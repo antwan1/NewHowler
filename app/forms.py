@@ -68,11 +68,29 @@ class RegistrationForm(FlaskForm):
 
 
 
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
+
 #Request for Email, this class is temprorarily supressed for testing
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField(_l('Email'), validators=[DataRequired(), Email()])
     submit = SubmitField(_l('Request Password Reset'))
 
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
 #A form when the user receives a reset password request.
 class ResetPasswordForm(FlaskForm):
     password = PasswordField(_l('Password'), validators=[DataRequired()])
@@ -80,6 +98,16 @@ class ResetPasswordForm(FlaskForm):
         _l(' please repeat Password'), validators=[DataRequired(),
                                            EqualTo('password')])
     submit = SubmitField(_l('Request Password Reset'))
+
+    # /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
+
 
 #A form to enable users to change their status and Identity.
 class EditProfileForm(FlaskForm):
@@ -130,6 +158,18 @@ class EmptyForm(FlaskForm):
 class PostForm(FlaskForm):
     post = TextAreaField(_l('Express some Science today!'), validators=[DataRequired()])
     submit = SubmitField(_l('Howl your findings'))
+
+
+# /***************************************************************************************
+        ##LEARNED FROM##
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 01/10/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
+# *
+# ***************************************************************************************/
+
 
 #A form for submitting Private Messages
 class MessageForm(FlaskForm):

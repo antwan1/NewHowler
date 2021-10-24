@@ -378,7 +378,7 @@ def FAQ():
 
 @app.before_request
 def before_request():
-    
+    #Will attain time before a request is made. 
     g.locale = str(get_locale())
 
 
@@ -484,7 +484,10 @@ def update_job (job_id):
 def delete_job(post_id):
     post = Jobpost.query.get_or_404(post_id)
     if post.author != current_user:
+    #If its not the current author, then there will be a forbidden error.
         abort(403)
+
+    #Should perhaps add rollback.
     db.session.delete(post)
     db.session.commit()
     flash('Your post has been deleted!')
