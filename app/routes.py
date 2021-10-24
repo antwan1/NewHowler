@@ -180,7 +180,6 @@ def logout():
 # *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
 # *
 # ***************************************************************************************/
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -212,7 +211,6 @@ def register():
 # *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars
 # *
 # ***************************************************************************************/
-
 @app.route('/user/<username>')
 @login_required
 def user(username):
@@ -243,8 +241,6 @@ def user(username):
 # *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-vi-profile-page-and-avatars
 # *
 # ***************************************************************************************/
-
-
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -458,6 +454,15 @@ def job (job_id):
 
 
 
+# /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Flask Tutorial 
+# *    Author: Corey Schaffer
+# *    Date: 07/10/2021
+# *    Code version: N/A
+# *    Availability:https://www.youtube.com/watch?v=u0oDDZrDz9U&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=8
+# *
+# ***************************************************************************************/
 app.route('/job/<int:job_id>/update', methods=['GET', 'POST'])
 @login_required
 #Will improve on the CRUD system.
@@ -477,6 +482,17 @@ def update_job (job_id):
         form.content.data = post.content
     return render_template('createjob.html', title=_('Update Job'), 
             form=form, legend = 'Update Post' )
+
+
+ # /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Flask Tutorial 
+# *    Author: Corey Schaffer
+# *    Date: 07/10/2021
+# *    Code version: N/A
+# *    Availability:https://www.youtube.com/watch?v=u0oDDZrDz9U&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH&index=8
+# *
+# ***************************************************************************************/           
 
 @app.route("/post/<int:job_id>/delete", methods=['POST'])
 #Will improve on the CRUD system.
@@ -503,9 +519,17 @@ RSS_FEEDS = {'bbc': 'http://feeds.bbci.co.uk/news/science_and_environment/rss.xm
              'iol': 'http://www.iol.co.za/cmlink/1.640'}
 
 
+ # /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Flask by Example 
+# *    Author: Packt
+# *    Date: 11/10/2021
+# *    Code version: N/A
+# *    Availability:https://subscription.packtpub.com/book/web-development/9781785286933/2
+# *
+# ***************************************************************************************/   
 
-
-@app.route("/news", methods=['GET', 'POST'])
+@app.route("/GeneralNews", methods=['GET', 'POST'])
 @login_required
 def get_news():
     query = request.form.get("publication")
@@ -520,3 +544,46 @@ def get_news():
 
 
 
+ # /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Flask by Example 
+# *    Author: Packt
+# *    Date: 11/10/2021
+# *    Code version: N/A
+# *    Availability:https://subscription.packtpub.com/book/web-development/9781785286933/2
+# *
+# ***************************************************************************************/   
+
+
+placeholdernews = 'http://feeds.foxnews.com/foxnews/latest'
+
+#This is for later implementation, testing to see how to incorporate different types of news 
+@app.route("/Technology", methods=['GET', 'POST'])
+@login_required
+def technews():
+    feed = feedparser.parse(placeholdernews)
+    
+    return render_template ("tech.html", articles=feed ['entries'])
+
+
+
+
+ # /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Flask by Example 
+# *    Author: Packt
+# *    Date: 11/10/2021
+# *    Code version: N/A
+# *    Availability:https://subscription.packtpub.com/book/web-development/9781785286933/2
+# *
+# ***************************************************************************************/   
+
+placeholdernewstwo = 'http://rss.cnn.com/rss/edition.rss'
+
+#This is for later implementation, testing to see how to incorporate different types of news 
+@app.route("/Enviromental", methods=['GET', 'POST'])
+@login_required
+def environews():
+    feed = feedparser.parse(placeholdernewstwo)
+    
+    return render_template ("env.html", articles=feed ['entries'])

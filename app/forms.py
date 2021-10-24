@@ -154,6 +154,17 @@ class EditProfileForm(FlaskForm):
 class EmptyForm(FlaskForm):
     submit = SubmitField('Submit')
 
+
+
+# /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 20/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ix-pagination
+# *
+# ***************************************************************************************/
 #A form for submitting Posts in Homepage
 class PostForm(FlaskForm):
     post = TextAreaField(_l('Express some Science today!'), validators=[DataRequired()])
@@ -169,8 +180,6 @@ class PostForm(FlaskForm):
 # *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-xxi-user-notifications
 # *
 # ***************************************************************************************/
-
-
 #A form for submitting Private Messages
 class MessageForm(FlaskForm):
     message = TextAreaField(_l('Message'), validators=[
