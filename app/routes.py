@@ -33,7 +33,6 @@ import feedparser
 # *    Code version: 2.0
 # *    Availability: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
 # ***************************************************************************************/
-   
 
 @app.before_request  #Checks if user is logged to know when they have been last seen.
 def before_request():
@@ -410,17 +409,20 @@ def send_message(recipient):
 
 
 #This application form is inspired by the messages tab. 
-@app.route('/application/<application>', methods=['GET', 'POST'])
+@app.route('/application/<int:job_id>', methods=['GET', 'POST'])
 @login_required
-def application(application):
+def apply(job_id):
     #will create an application section soon
     #This should send an application to the employer. 
-    job=Jobpost.query.filter_by(id=application).first_or_404()
+    post = Jobpost.query.get_or_404(job_id)
+    #This requires more work to actualise the endpoint and
+    #This is technically correct however it doesnt actualise
     form=ApplicationForm()
     if form.validate_on_submit():
+            #Test if application validation works.
         flash(_('Your application has been sent.'))
-        return redirect(url_for('application', job =application))
-    return redirect(url_for('apply.html', title=_('Create Applicaiton'), form=form, application=application))    
+        return redirect(url_for('opportunity'))
+    return render_template('apply.html', title=_('Create Applicaiton'), form=form, post=post)   
 
 
 # /***************************************************************************************

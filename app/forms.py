@@ -198,3 +198,5 @@ class ApplicationForm(FlaskForm):
     last_name = StringField(_l('Last name of Applicant'), validators=[DataRequired()])
     phone_number = StringField(_l('Phone Number'), validators=[DataRequired()])
     cv = FileField('Update Profile Picture', validators=[FileAllowed(['pdf', 'doc'])])
+
+

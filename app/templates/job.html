@@ -17,6 +17,7 @@
             <p class="article-content">{{ post.content }}</p>
           </div>
         </article>
+        <!--If the author clicks on their own job post then it will provide options to delete/update -->
         {% if post.author == current_user %}
           <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('update_job', job_id=post.id) }}">Update</a>
@@ -25,10 +26,11 @@
         {% endif %}
     {% if post.author != current_user %}
     <div>
-<a class="btn btn-primary btn-sm mt-" href="#"> {{_('Apply Here!')}}</a>
+<a class="btn btn-primary btn-sm mt-" href="{{ url_for('apply')}}"> {{_('Apply Here!')}}</a>
 </div>
 {%endif%}
 
+<!-- This will provide a second option when deleting a post-->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">

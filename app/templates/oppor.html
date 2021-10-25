@@ -19,7 +19,7 @@
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ post.author.username }}</a>
-              
+              <!-- Loops through all jobpost with the content, title and user name-->
             </div>
             <h2><a class="article-title" href="{{url_for('job', job_id =post.id)}}">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.content }}</p>
@@ -32,7 +32,8 @@
         <ul class="pager">
             <li class="previous{% if not prev_url %} disabled{% endif %}">
                 <a href="{{ prev_url or '#' }}">
-                    <span aria-hidden="true">&larr;</span> {{ _('Newer jobs') }} <!-- Pagination pages-->
+                <!-- Pagination pages learned from Miguel Grinberg-->
+                    <span aria-hidden="true">&larr;</span> {{ _('Newer jobs') }} 
                 </a>
             </li>
             <li class="next{% if not next_url %} disabled{% endif %}">
