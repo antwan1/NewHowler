@@ -7,11 +7,14 @@
     {{ wtf.quick_form(form) }}
     <br>
     {% endif %}
+    <!--All followed users post looped through-->
     {% for post in posts %}
         {% include '__post.html' %}
     {% endfor %}
     <nav aria-label="...">
         <ul class="pager">
+
+        <!-- Pagination-->
             <li class="previous{% if not prev_url %} disabled{% endif %}">
                 <a href="{{ prev_url or '#' }}">
                     <span aria-hidden="true">&larr;</span> {{ _('Newer posts') }}
