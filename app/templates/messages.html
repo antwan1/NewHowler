@@ -7,6 +7,7 @@
     {% endfor %}
     <nav aria-label="...">
         <ul class="pager">
+        <!-- Paginated Messages-->
             <li class="previous{% if not prev_url %} disabled{% endif %}">
                 <a href="{{ prev_url or '#' }}">
                     <span aria-hidden="true">&larr;</span> {{ _('Newer messages') }}

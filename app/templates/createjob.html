@@ -12,7 +12,7 @@
                     {{ form.title(class="form-control form-control-lg is-invalid") }}
                     <div class="invalid-feedback">
                         {% for error in form.title.errors %}
-                            <span>{{ error }}</span>
+                            <span>{{ error }}</span> <!-- Will pop an error message if doesnt meet requirments-->
                         {% endfor %}
                     </div>
                 {% else %}
@@ -34,6 +34,8 @@
             </div>
         </fieldset>
         <div class="form-group">
+
+        <!--Submit button-->
             {{ form.submit(class="btn btn-outline-info") }}
         </div>
     </form>
