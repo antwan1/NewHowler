@@ -5,6 +5,7 @@
 <table class="table table-hover">
         <tr>
             <td width="70px">
+            <!-- Clickable user link -->
                 <a href="{{ url_for('user', username=post.author.username) }}">
                     <img src="{{ post.author.avatar(70) }}" />
                 </a>
@@ -12,11 +13,12 @@
             <td>
                 {% set user_link %}
                     <a href="{{ url_for('user', username=post.author.username) }}">
+                    <!--Places content on the post-->
                         {{ post.author.username }}
                     </a>
                 {% endset %}
                 {{ _('%(username)s said %(when)s',
-                    username=user_link, when=moment(post.timestamp).fromNow()) }}
+                    username=user_link, when=moment(post.timestamp).fromNow()) }} <!-- Displays when it was posted-->
                 <br>
                 <span id="post{{ post.id }}">{{ post.body }}</span>
                 {% if post.language and post.language != g.locale %}
@@ -26,7 +28,7 @@
                                 '#post{{ post.id }}',
                                 '#translation{{ post.id }}',
                                 '{{ post.language }}',
-                                '{{ g.locale }}');">{{ _('Translate') }}</a>
+                                '{{ g.locale }}');">{{ _('Translate') }}</a> <!-- Translate feature will be added in future work-->
 
                 </span>
                 {% endif %}

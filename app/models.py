@@ -217,8 +217,15 @@ class User(UserMixin,db.Model):
 
 
 
-
-
+# /***************************************************************************************
+            ##LEARNED FROM##
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 20/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ix-pagination
+# *
+# ***************************************************************************************/
 
 #Model class for posts
 class Post(db.Model):

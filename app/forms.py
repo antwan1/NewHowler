@@ -10,6 +10,17 @@ from flask_wtf.file import FileField, FileAllowed
 
 #Flask-wtforms is providing data required.
 
+
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
 #To attain user inputs for login in HTML
 class LoginForm(FlaskForm):
     username = StringField(_l('Username'), validators=[DataRequired()])
@@ -17,6 +28,16 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField(_l('Remember Me'))
     submit = SubmitField(_l('Sign In'))
 
+
+
+# /***************************************************************************************
+# *    Title: Mega Flask Tutorial
+# *    Author: Miguel Grinberg
+# *    Date: 02/08/2021
+# *    Code version: 2.0
+# *    Availability:https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-v-user-logins
+# *
+# ***************************************************************************************/
 #To gain new users in the registration.html, the the first password input will be compared against the hashed password.
 class RegistrationForm(FlaskForm):
     username = StringField(_l('Enter a unique Username'), validators=[DataRequired()])
